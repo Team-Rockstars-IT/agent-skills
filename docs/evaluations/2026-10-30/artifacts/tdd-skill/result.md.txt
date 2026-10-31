@@ -1,0 +1,6 @@
+# Execution account
+
+- Implemented owner-only renaming with trimmed, nonempty titles. The existing unknown-ID rejection remains in place; successful renames preserve the other note fields.
+- Used `node:test` at the approved `renameNote` seam. The trimmed-title, non-owner, and whitespace cases each failed before their corresponding implementation change and passed afterward. Final run: `node --test notes.test.mjs`, 3 passed.
+- Separately invoked `renameNote` with an unknown ID; it threw `missing` (exit 0 for the check).
+- Inspection shows all rejection paths precede the title assignment. The approved seam has no read operation, so unchanged state after rejection was not independently observed at runtime.

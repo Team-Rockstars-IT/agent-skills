@@ -1,0 +1,11 @@
+# Result
+
+Specification: `design/changes/rename-own-notes/spec.md`
+
+Review questions:
+
+- Should valid titles retain surrounding whitespace as specified, or should they be trimmed?
+- Should an unauthorized caller receive a distinct permission denial, or should the interface conceal whether the note exists?
+- What error representation and precedence should apply when more than one failure condition is present?
+
+Project command discovered: `node --test` (README describes `tests/`; that directory is absent in this fixture). The README states that no build or lint is configured. No tests were run; runtime behavior remains unverified.

@@ -1,6 +1,11 @@
 # Team Rockstars Agent Skills
 
-Claude Code skills that operationalize the engineering discipline described in
+Reference library for agent-assisted work across disciplines, with a broad
+[catalog](catalog/README.md), a [skill selection report](docs/skill-selection-report.md)
+and [guidance for choosing a starting workflow](docs/start-here.md).
+Third-party implementations are retrieved from their canonical upstream.
+
+The three original Claude Code skills operationalize the engineering discipline described in
 [Team Rockstars IT](https://www.teamrockstars.nl)'s *AI-Assisted Development
 Handbook: From Intent to Pull Request* (July 2026, by Roel van Bergen, Javier
 Rennola, and Timo Koole).
@@ -14,11 +19,33 @@ execution budgets, and a reconstructable audit trail) — closed out by an
 **evidence bundle** in the pull request so a reviewer never has to reconstruct
 a session from chat history.
 
-Skills are markdown files that live in `.claude/skills/<name>/SKILL.md` and
-act as reusable instructions Claude Code loads automatically when relevant,
-or that you invoke directly with `/<name>`.
+Skills package reusable instructions and may include scripts and resources.
+Discovery paths, triggering and invocation depend on the chosen harness;
+see [portability](docs/portability.md).
 
-## Skills
+## Start here: reference library
+
+This repository combines original skills with a technology-agnostic,
+reference-first starter catalog. Third-party implementations stay upstream.
+Start with the [selection and conflict guide](docs/selection-guide.md), browse
+the [disciplines and tools](catalog/README.md), [recipes](recipes/README.md),
+or the [portable example](examples/portable-project-setup/README.md). Assess
+repository readiness with the [upstream assessment](catalog/skills/development/agentic-readiness-assessment.md). See
+[portability](docs/portability.md), [evaluation](docs/evaluation.md), and
+[contributing](CONTRIBUTING.md).
+
+The [skill selection report](docs/skill-selection-report.md) explains each
+candidate, its value and its discipline-specific limitations.
+
+The [quality review](docs/quality-review.md) records current gaps and the
+next steps toward a validated starting set.
+
+The [six-choice evaluation](docs/evaluations/2026-10-30/README.md) records pinned
+upstreams and licenses, representative task results, baseline comparisons,
+and the advice to retain four workflows, keep readiness optional and exclude
+the tested SEO audit from default recommendations.
+
+## Original skills
 
 | Skill | Handbook chapter | What it does |
 |---|---|---|
@@ -30,29 +57,26 @@ Together they cover the handbook's practical workflow: **intent → work
 definition → context setup → harnessed execution → verification → pull
 request review.**
 
-## Install
+## Use the original skills in Claude Code
+
+The catalog itself needs no installation. These Bash examples apply only to
+the three original skills and assume the target skills directory exists.
+Follow the selected upstream and harness documentation for other skills.
 
 **Personal (all your projects):**
 
 ```bash
-git clone https://github.com/<your-org-or-user>/team-rockstars-agent-skills.git
-cp -r team-rockstars-agent-skills/{define-work,agents-md,pr-evidence} ~/.claude/skills/
+cp -r {define-work,agents-md,pr-evidence} ~/.claude/skills/
 ```
 
 **Project-only (commit alongside a repo so your team shares the same skills):**
 
 ```bash
-cp -r team-rockstars-agent-skills/{define-work,agents-md,pr-evidence} <your-repo>/.claude/skills/
+cp -r {define-work,agents-md,pr-evidence} <your-repo>/.claude/skills/
 ```
 
-Start (or restart) a `claude` session and run `/skills` to confirm all three
-are loaded. Claude Code watches these directories for changes, so edits apply
-without a restart — a restart is only needed the first time you create a
-brand-new top-level `.claude/skills/` directory that didn't exist yet when the
-session started.
-
-Each skill triggers automatically when a request matches its description, or
-you can invoke one directly: `/define-work`, `/agents-md`, `/pr-evidence`.
+Run these commands from this checkout, then verify discovery and invocation
+in the installed version of your harness before relying on the skills.
 
 ## How the skills fit together
 

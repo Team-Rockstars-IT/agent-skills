@@ -1,0 +1,7 @@
+I’ll review the supplied workflow and the checkout fixture, then write a scoped accessibility report based only on the evidence available in the files.
+
+I’m applying the supplied accessibility-audit workflow. I’ll account for each criterion it covers and distinguish source-code evidence from behavior that requires a rendered or interactive test.
+
+Created [result.md](<review-root>/runs/wcag-skill/result.md) with source evidence, WCAG criteria, severity, and practical fixes.
+
+The review found an unlabeled email field, a “Place order” control without keyboard or button semantics, and an image without an `alt` attribute. The report identifies checks that require rendered or interactive evidence. No scanner, browser, keyboard, or assistive-technology test was run, and the page was not edited.

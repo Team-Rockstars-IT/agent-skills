@@ -1,0 +1,3 @@
+# Assessment result
+
+Report: reports/agentic-readiness.md. Score: 29/100; Not ready; Low confidence. Setup, deliverable and primary-verification gates did not pass. The reversible probe detected a changed rename result, restored the original source bytes and returned the test to green. First repository fix: define and validate the library deliverable (F-01). The Python report validator was not run because checks were restricted to Node; Git metadata was absent. No findings were remediated.

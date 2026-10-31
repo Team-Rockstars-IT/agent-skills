@@ -1,0 +1,11 @@
+I’ll read the supplied workflow and prior check-in, then inspect the fixture for concrete evidence. I’ll keep unresolved runtime behavior explicit and produce the requested Markdown artifacts within the workspace.
+
+I’m applying the supplied security threat-model workflow. The prior check-in and your instruction satisfy its clarification gate: the deployment context is confirmed, and the remaining unknowns will be treated as conditional assumptions.
+
+The fixture exposes three functions but no routing, database, proxy, or logging implementation. The strongest risks are therefore conditional abuse paths, not confirmed exploitable vulnerabilities; I’m recording the specific missing controls and evidence needed to resolve them.
+
+Completed the [threat model](<review-root>/runs/threat-followup-skill/threat-followup-skill-threat-model.md) and its [summary](<review-root>/runs/threat-followup-skill/result.md).
+
+The highest-priority conditional risks are cross-tenant note access, SSRF through preview URLs, and credentials reaching logs. Exploitability remains unknown because routing, downstream authorization, egress restrictions, and log handling are not present in the fixture.
+
+I inspected the fixture and checked the report’s sections and threat coverage. No runtime tests or external-service access were performed.

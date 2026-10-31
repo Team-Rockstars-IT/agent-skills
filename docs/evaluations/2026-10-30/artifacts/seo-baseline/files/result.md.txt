@@ -1,0 +1,24 @@
+# Product-page SEO snapshot audit
+
+Scope: the supplied synthetic `page.html`, `robots.txt`, and `README.md` for `https://notes.invalid/product`. This is a static snapshot, not a live-site or search-engine inspection.
+
+## Prioritized findings
+
+1. **High — Remove the page's `noindex`.** `page.html` contains `<meta name="robots" content="noindex">`, while `README.md` says this public product page should be indexable. This directive asks search engines not to index the page. Remove it, or use an appropriate indexable robots directive. After deployment, inspect the served HTML and response headers for any remaining `noindex`, then check the URL with the relevant search engine's inspection tool.
+
+2. **High — Correct the canonical target.** `page.html` declares `https://notes.invalid/unrelated` as canonical for the product page. This signals a different URL as preferred and conflicts with the stated intent to index the product page. If `/product` is the intended primary URL, set the canonical to `https://notes.invalid/product`; otherwise use the actual preferred equivalent product URL. Verify its response, indexability, and consistency with redirects and internal links when runtime access is available. A canonical is a signal, not a guarantee of selection.
+
+3. **Medium — Add a descriptive title and meta description.** The supplied HTML has neither a `<title>` nor a meta description. Add a concise, unique title that identifies the product and a truthful description of its value for teams. For example, if accurate: `<title>Private Notes for Teams</title>` and `<meta name="description" content="Keep team notes private and accessible in one place.">`. Confirm product claims before publishing. Search engines may choose their own title or snippet.
+
+4. **Medium — Expand the product content with useful specifics.** The visible snapshot contains only the heading “Private notes” and one sentence, “Fast private notes for teams.” Explain the product's actual capabilities, intended users, and relevant differentiators in clear page copy, supported by accurate details. This helps visitors and provides more context about the page; no ranking or traffic outcome can be inferred from this snapshot.
+
+## Observations and unknowns
+
+- The supplied `robots.txt` has `User-agent: *` and `Allow: /`; it does not block `/product` in this file. Allowing crawling does not override the page's `noindex`. The live robots response and any other crawler-specific controls were not checked.
+- The page has an H1 and the image has `alt="Notes editor"`; the image's availability and whether the alt text accurately describes it are unknown.
+- HTTP status, redirects, response headers, rendered output, canonical selection, actual indexing, sitemap and internal links are unknown. The snapshot contains no Search Console, rankings, traffic, field metrics, or speed measurements. No site-wide conclusions can be drawn from this one page.
+- Once changes are deployed, verify the served page and headers, robots access, canonical destination, and indexability through a search-engine URL inspection; request indexing if appropriate. These are recommended follow-up checks, not checks performed here.
+
+## Checks performed
+
+Listed fixture files and inspected the supplied `README.md`, `robots.txt`, and `page.html` as text. No network, runtime, search-engine, or performance checks were performed; no source files were changed.

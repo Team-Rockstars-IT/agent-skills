@@ -1,0 +1,27 @@
+# Rename own notes
+
+## Purpose
+
+A user can change the title of a note they own while retaining the same note and its content.
+
+## Requirements
+
+- A rename identifies an existing note and the acting user and supplies a new title.
+- A title is valid when it is a string containing at least one non-whitespace character. A successful rename stores the supplied title as provided; surrounding whitespace is not removed.
+- Only the note's owner may rename it. Ownership is determined using the note's existing owner identity.
+- A successful rename changes the title of the identified note. Its identity, owner, body, and other existing content remain unchanged, and no other note is changed. The caller receives the updated note.
+- If the note does not exist, the operation fails as an unknown-note error and changes no notes.
+- If the actor does not own the note, the operation fails as a permission denial and changes no notes.
+- If the title is invalid, including an empty string, a whitespace-only string, or a non-string value, the operation fails as invalid input and changes no notes.
+
+## Acceptance scenarios
+
+1. Given Alice owns note `n1` with title `Old` and body `Keep me`, when Alice renames it to `New`, the operation succeeds and returns the updated note. Its ID remains `n1`, its owner remains Alice, its body remains `Keep me`, and its title is `New`.
+2. Given Alice owns `n1`, when another user attempts to rename it to `New`, the operation denies permission and the note remains unchanged.
+3. Given Alice owns `n1`, when Alice supplies an empty, whitespace-only, or non-string title, the operation reports invalid input and the note remains unchanged.
+4. Given no note has ID `unknown`, when a user attempts to rename that ID, the operation reports an unknown note and all notes remain unchanged.
+5. Given Alice owns `n1`, when Alice supplies `  New  `, the operation succeeds and the stored title is exactly `  New  `.
+
+## Boundary
+
+This capability covers renaming only. It does not change note identity, ownership, or content, and does not define note creation or deletion.

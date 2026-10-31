@@ -1,0 +1,56 @@
+# Change specification: Rename own note
+
+## Objective
+
+A user can rename a note they own to a nonempty title while retaining the note identity and content. This change covers rename behavior only.
+
+## Assumptions
+
+- The existing service identifies the acting user and note by `actor` and `id`, and ownership by the note's `owner` field.
+- A title containing only whitespace should be rejected as empty; whether surrounding whitespace on an otherwise valid title is preserved is a review question.
+- Failed requests leave all notes unchanged. Error names and whether missing and unauthorized notes are distinguishable are review questions.
+
+## Current project context
+
+- Stack: JavaScript ES modules, running on Node.js; no version is declared in the fixture.
+- Source: `src/notes.mjs`; notes have `id`, `owner`, `title`, and `body` fields.
+- Tests: `tests/` is the documented location, but does not currently exist.
+- Specifications: `design/changes/`, as documented in `README.md`.
+
+## Commands
+
+- Test: `node --test` (documented in `README.md`; not run for this specification).
+- Build, lint, and development commands: none configured or documented in the inspected fixture.
+
+## Code style
+
+The existing service uses named ES module exports and camelCase function names. Existing example:
+
+```js
+export const notes = [{id:'n1',owner:'alice',title:'Old',body:'Keep me'}];
+```
+
+## Behavioral requirements and success criteria
+
+1. Given an existing note owned by the actor and a valid nonempty title, renaming succeeds. The resulting note has the requested title, the same `id`, `owner`, and `body`, and is retrievable with that title thereafter.
+2. Given an existing note owned by another user, the request is denied and no note is changed.
+3. Given an empty or whitespace-only title, the request is rejected and no note is changed. Non-string values are invalid; no coercion is assumed.
+4. Given an unknown note ID, the request does not create a note and is rejected without changing existing notes.
+5. A failed request provides an observable error; the exact error contract and precedence when more than one condition fails require review.
+
+## Testing strategy
+
+Use the documented Node test runner, with tests under `tests/`. Verify successful rename and subsequent state, preserved identity and body, denial for another owner, invalid titles, unknown IDs, and unchanged state after each failure. No coverage threshold is documented. Runtime behavior has not been verified in this session.
+
+## Boundaries
+
+- Always: preserve note identity, ownership, and body; validate the title and authorization; keep failures free of mutations.
+- Ask first: changes to the data schema, dependencies, or the existing public error contract beyond the reviewed decision.
+- Never: modify another user's note or create a note as a side effect of rename.
+
+## Open questions
+
+1. Should surrounding whitespace in an otherwise valid title be preserved or trimmed? Are there maximum length or character restrictions?
+2. What error types or messages should represent invalid input, permission denial, and an unknown note? Should unauthorized and unknown notes be distinguishable to callers?
+3. If multiple conditions fail, what error precedence is expected? What is the expected behavior when the new title equals the existing title?
+4. Is in-memory state the intended persistence boundary, or must the renamed title survive a process restart?

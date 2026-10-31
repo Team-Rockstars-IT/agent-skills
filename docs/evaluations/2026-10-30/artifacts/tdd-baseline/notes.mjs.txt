@@ -1,0 +1,9 @@
+export const notes = [{id:'n1',owner:'alice',title:'Old',body:'Keep me'}];
+export function renameNote(actor, id, title) {
+  const note = notes.find(n => n.id === id);
+  if (!note) throw new Error('missing');
+  if (note.owner !== actor) throw new Error('forbidden');
+  if (typeof title !== 'string' || !title.trim()) throw new Error('invalid title');
+  note.title = title.trim();
+  return { ...note };
+}

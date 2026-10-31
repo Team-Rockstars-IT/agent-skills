@@ -1,0 +1,7 @@
+I’ll review the supplied skill and snapshot, then write an evidence-backed audit to `result.md` within the fixture.
+
+The snapshot contains two direct indexing conflicts: a `noindex` directive and a canonical pointing to a different page. I’ll check the relevant title and prioritization guidance before completing the report.
+
+Completed the snapshot audit in [result.md](<review-root>/runs/seo-skill/result.md).
+
+The report prioritizes the `noindex` directive and incorrect canonical, then covers missing metadata and limited product content. Runtime indexing, performance, rankings and traffic remain unknown.

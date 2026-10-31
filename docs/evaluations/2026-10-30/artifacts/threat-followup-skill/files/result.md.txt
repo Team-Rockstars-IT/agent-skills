@@ -1,0 +1,5 @@
+# Threat-model check-in result
+
+The repository-grounded model is in [threat-followup-skill-threat-model.md](threat-followup-skill-threat-model.md). The main conditional high-priority paths are cross-tenant note reads, SSRF through preview URLs, and authorization credentials reaching logs. The source shows the relevant calls but does not establish whether the routes are exposed or whether downstream authorization, network restrictions, and log redaction prevent exploitation.
+
+The user confirmed the prior deployment, authentication, tenancy and confidentiality context and could not answer the remaining questions. The report records explicit assumptions, evidence anchors, qualitative likelihood and impact, existing versus recommended controls, and review priorities. Static fixture inspection was performed; no runtime tests or external-service access were performed.

@@ -1,0 +1,28 @@
+import test, { beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+import { notes, renameNote } from './notes.mjs';
+
+const original = { id: 'n1', owner: 'alice', title: 'Old', body: 'Keep me' };
+beforeEach(() => { notes.splice(0, notes.length, { ...original }); });
+
+test('owner renames a note with a trimmed title while preserving identity and body', () => {
+  const result = renameNote('alice', 'n1', '  New title  ');
+  const expected = { ...original, title: 'New title' };
+  assert.deepEqual(result, expected);
+  assert.deepEqual(notes, [expected]);
+});
+
+test('a non-owner cannot rename a note', () => {
+  assert.throws(() => renameNote('bob', 'n1', 'Changed'));
+  assert.deepEqual(notes, [original]);
+});
+
+test('whitespace-only titles are rejected without mutation', () => {
+  assert.throws(() => renameNote('alice', 'n1', '  \t\n '));
+  assert.deepEqual(notes, [original]);
+});
+
+test('unknown IDs are rejected without mutation', () => {
+  assert.throws(() => renameNote('alice', 'missing', 'Changed'));
+  assert.deepEqual(notes, [original]);
+});

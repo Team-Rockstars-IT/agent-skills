@@ -1,0 +1,7 @@
+I’ll inspect the fixture and its supplied evidence, then write a focused audit to `result.md` with clear limits on what the snapshot can establish.
+
+The snapshot contains two direct indexing conflicts: a `noindex` directive and a canonical pointing to an unrelated URL. I’m documenting those first, followed by the missing page metadata and the limits of the supplied evidence.
+
+Created [result.md](<review-root>/runs/seo-baseline/result.md).
+
+The audit prioritizes the page’s `noindex` directive and unrelated canonical URL, then covers missing metadata and sparse product content. It identifies runtime and search-engine evidence as unknown. No source files were changed.

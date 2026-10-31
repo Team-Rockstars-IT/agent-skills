@@ -1,0 +1,15 @@
+# Checkout accessibility review
+
+This is a static review of `checkout.html` only. All evidence below is on line 1, where the entire page is written. Severity reflects likely impact on completing checkout, not a formal WCAG conformance rating.
+
+| Severity | Evidence and impact | Relevant WCAG success criteria | Practical fix |
+| --- | --- | --- | --- |
+| High | `<div onclick="submitOrder()">Place order</div>` is a generic element with a mouse click handler. It is not natively keyboard focusable or operable, so a keyboard user cannot reach and activate this control through its native behavior. | 2.1.1 Keyboard; 4.1.2 Name, Role, Value | Replace it with `<button type="submit">Place order</button>` inside the form. Keep any order handling on the form's `submit` event so mouse, keyboard and other submission methods share the same behavior. |
+| High | `<input id="email" type="email">` has no associated label or other accessible name in the supplied markup. Users may not know what information to enter, and assistive technology has no author-provided name for the field. | 1.3.1 Info and Relationships; 3.3.2 Labels or Instructions; 4.1.2 Name, Role, Value | Add a visible `<label for="email">Email address</label>` associated with the input. If email is required, communicate that visibly and use `required`; provide accessible error guidance when validation fails. |
+| Medium | `<img src="delivery.png">` has no `alt` attribute. Its purpose and the image itself are not supplied, so the appropriate alternative cannot be determined from this source. | 1.1.1 Non-text Content | If the image conveys information, add a concise `alt` expressing that information. If it is purely decorative, use `alt=""`. |
+
+The document does supply `lang="en"`, a descriptive `<title>Checkout</title>`, an `<h1>`, and descriptive link text for the privacy policy. These observations alone do not establish conformance.
+
+## Evidence limits
+
+No scanner, browser, keyboard interaction, or assistive-technology test was run. This file alone cannot establish rendered contrast, text resizing or zoom, reflow, visible focus, actual tab order and interaction, screen-reader announcements, validation and error recovery behavior, or whether checkout completes. The image content and purpose, the privacy page, server behavior, and any styles or scripts outside the supplied HTML are also unavailable. Test the rendered experience and complete checkout with keyboard and representative assistive technology, and assess the image in context before making a conformance claim.

@@ -1,0 +1,105 @@
+## Executive summary
+
+The main conditional risks are cross-tenant note disclosure, server-side request forgery (SSRF) through previews, and credential exposure through error logging. `server.mjs` provides direct evidence of the relevant calls, but the fixture does not establish their routing, surrounding authorization, egress restrictions, logger configuration, or runtime behavior. Priorities below are conditional risk estimates, not verified vulnerabilities.
+
+## Scope and assumptions
+
+- Scope: the JavaScript runtime functions in `server.mjs`, informed by `README.md` and `previous-check-in.txt`. No application framework, listener, routes, database implementation, dependency manifest, build artifacts, tests, or deployment configuration are present in the supplied fixture. CI, development tooling, and operator host compromise are outside scope.
+- The user confirmed the prior context: internet-exposed multi-tenant confidential notes API, trusted HTTPS-terminating proxy and trusted authentication middleware, with malicious authenticated tenants in scope (`README.md`; `previous-check-in.txt`). These are supplied context, not independently verified controls. Tenant isolation for reads is expected.
+- Conditional assumptions: a tenant can reach the relevant functions and influence note IDs and preview URLs; preview can access destinations reachable by the process; errors can be induced and logs may contain usable credentials. Return of function results to callers, database authorization, egress policy, log redaction and access, and limits are unknown. Rankings fall if effective controls prevent these paths, and rise with broad reach or sensitive data.
+- The previous check-in asked three questions about read authorization, preview exposure and network limits, and log handling and sensitivity. The user cannot answer further and explicitly requested conditional assumptions; this is a scripted follow-up, not a native resumed session.
+- Open questions for later validation: Where is tenant authorization enforced, and can another tenant's ID be supplied? Which callers can invoke preview, and what URL, redirect, DNS, egress, size and rate restrictions exist? Where do logs go, who can read them, are credentials redacted, and what are tenant scale and note sensitivity?
+
+## System model
+
+### Primary components
+
+`server.mjs` exports three JavaScript functions: `getNote` calls an injected database object; `preview` calls `fetch` and reads its response as text; `logError` passes an error and authorization header to an injected logger. The proxy and authentication middleware are described in `README.md`; their implementation and deployment are absent. No framework or build system is identifiable. Runtime handlers are distinct from the supplied check-in and exercise files; no CI or tests are evidenced.
+
+### Data flows and trust boundaries
+
+- **B1: Internet tenant → proxy → application:** requests may carry credentials, IDs and URLs over HTTPS to the trusted proxy; middleware supplies authenticated user IDs per `README.md`. Proxy-to-application transport, routing, caller authorization, validation and rate limits are unknown. The functions consume request fields (`server.mjs:1-3`). TM-001 through TM-005 address this input boundary.
+- **B2: application → database interface:** `getNote` passes an ID to `db.findNote` and returns its result (`server.mjs:1`). The database protocol, tenant context, row authorization, validation and isolation are unknown; the function supplies no tenant argument. TM-001 addresses this boundary.
+- **B3: application → URL destination:** `preview` passes a supplied URL to `fetch` and reads text (`server.mjs:2`). Scheme, destination, redirects, encryption, DNS handling, response limits, timeouts and egress controls are not established in this fixture. TM-002 and TM-003 address this boundary.
+- **B4: application → logger and log readers:** `logError` sends the error and authorization header to `logger.error` (`server.mjs:3`). Logger transport, redaction, retention, access controls and validation are unknown. TM-004 and TM-005 address this boundary.
+
+#### Diagram
+
+```mermaid
+flowchart LR
+  A["Internet tenant"] --> B["Trusted proxy and auth"]
+  B --> C["Application functions"]
+  C --> D["Database interface"]
+  C --> E["URL destination"]
+  C --> F["Logger"]
+  F --> G["Log readers"]
+```
+
+The diagram shows supplied context and code-level interfaces, not verified deployment connections. Return paths and their exposure remain unknown.
+
+## Assets and security objectives
+
+| Asset | Why it matters | Security objective (C/I/A) |
+|---|---|---|
+| Tenant notes | Confidential content must remain isolated between tenants (`README.md`). | C, I, A |
+| Authorization credentials | Disclosure may permit impersonation, depending on credential type and validity (`server.mjs:3`). | C, I |
+| Process-accessible services and responses | Preview may carry the application's network reach across a trust boundary (`server.mjs:2`). | C, I, A |
+| Application resources | Unbounded fetch and text processing may consume network, time and memory (`server.mjs:2`). | A |
+| Logs and their diagnostic value | Errors and headers cross into a logger; secret disclosure or misleading records could harm users and investigations (`server.mjs:3`). | C, I, A |
+
+## Attacker model
+
+### Capabilities
+
+An authenticated malicious tenant is assumed able to choose IDs and URLs if the corresponding functions are exposed, and may induce errors if an accessible path permits it. An attacker may operate a URL destination and control its responses. These are conditional capabilities, not verified routes (`server.mjs:1-3`; `previous-check-in.txt`). Log access is a separate prerequisite, not assumed for every tenant.
+
+### Non-capabilities
+
+The model does not assume host or CI compromise, direct database or logger access, control of trusted middleware or proxy configuration, or the ability to forge another authenticated identity. It does not assume that a particular internal endpoint, metadata service, or usable token exists. Operator-controlled deployment policy and developer-controlled code are distinct from tenant-controlled request fields; their actual configuration is unknown.
+
+## Entry points and attack surfaces
+
+| Surface | How reached | Trust boundary | Notes | Evidence (repo path / symbol) |
+|---|---|---|---|---|
+| Note ID | Request parameter, if routed to handler | B1, B2 | No tenant argument passed by this function; downstream authorization unknown. | `server.mjs:1`, `getNote` |
+| Preview URL and remote response | Request body URL, if routed to handler | B1, B3 | Fetches URL and consumes text; caller visibility and safeguards unknown. | `server.mjs:2`, `preview` |
+| Error and authorization header | Error path, if invoked | B1, B4 | Header is passed to logger; redaction and readers unknown. | `server.mjs:3`, `logError` |
+
+## Top abuse paths
+
+1. **TM-001 — Read another tenant's note:** choose or obtain a different tenant's ID → submit it to an exposed read handler → if no effective tenant check exists, receive confidential content.
+2. **TM-002 — Read an internal response:** submit a URL pointing at a process-reachable internal resource → preview fetches it → if response text reaches the caller and egress is unrestricted, disclose internal data.
+3. **TM-003 — Exhaust resources:** point preview at a slow or large response or repeat requests → fetch and text consumption occupy resources → service availability degrades if effective limits are absent.
+4. **TM-004 — Steal a credential via logs:** induce an error carrying an authorization header → logger receives it → a person or principal with inappropriate log access obtains a usable credential if it is not redacted.
+5. **TM-005 — Damage diagnostic integrity:** induce errors containing attacker-controlled content → logger records it → if downstream rendering or parsing fails to preserve structure, misleading records obscure incidents or consume log capacity.
+
+## Threat model table
+
+| Threat ID | Threat source | Prerequisites | Threat action | Impact | Impacted assets | Existing controls (evidence) | Gaps | Recommended mitigations | Detection ideas | Likelihood | Impact severity | Priority |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| TM-001 | Authenticated tenant | Read exposed; another ID obtainable; no effective downstream tenant authorization. | Request another tenant's ID. | Confidential cross-tenant disclosure. | Notes | Trusted authentication is supplied context (`README.md`); `getNote` delegates to DB (`server.mjs:1`). | Function passes no tenant context; database and routing checks unknown. | Conditionally bind the authenticated tenant to the query and enforce tenant isolation in the database; test denied cross-tenant reads at the actual route. | Alert on repeated denied or cross-tenant ID lookups without logging note content. | Medium: a simple ID input exists, but reachability and isolation are unknown. | High: confidential notes could cross tenants. | high |
+| TM-002 | Authenticated tenant | Preview exposed; destination reachable; response returned or otherwise observable; no effective restrictions. | Fetch internal or sensitive URLs, including via redirects if permitted. | Internal data disclosure or unintended requests to internal services. | Internal responses, credentials, service integrity | Trusted authentication is supplied context (`README.md`); `fetch` is visible (`server.mjs:2`). | Destination and redirect policy, egress and response exposure unknown. | Conditionally allowlist required HTTPS destinations; resolve and reject private, loopback, link-local and metadata addresses at connection time and on every redirect; enforce network egress policy. | Log sanitized destination decisions and alert on denied internal ranges or repeated probes. | Medium: URL flows directly to fetch, but network reach and caller access are unknown. | High: sensitive internal responses or privileged actions may be exposed. | high |
+| TM-003 | Authenticated tenant or attacker-controlled destination | Preview exposed; effective time, size or request limits absent. | Return slow or large content, or make repeated preview calls. | Resource exhaustion and degraded availability. | Application resources, note availability | Trusted authentication is supplied context (`README.md`); `preview` reads response text (`server.mjs:2`). | No limits are visible in the function; external limits unknown. | Conditionally enforce per-tenant rate and concurrency limits, fetch deadlines and streamed byte caps before decoding; bound redirects. | Alert on preview latency, response sizes, concurrency and rejected requests. | Medium: the code consumes text, but limits and traffic are unknown. | Medium: exhaustion can disrupt service; capacity and blast radius are unknown. | medium |
+| TM-004 | Tenant inducing errors; unauthorized log reader | Error path receives a usable header; logger retains it unredacted; a reader can access it. | Obtain the logged credential and replay it if valid. | Account impersonation and possible note exposure. | Credentials, notes | Trusted authentication is supplied context (`README.md`); logging call is evidenced (`server.mjs:3`), not redaction. | Header is explicitly passed to logger; sinks, redaction and access unknown. | Remove authorization from `logError`; configure sink-level secret redaction, least-privilege access and retention; rotate exposed credentials if exposure is established. | Audit log access and alert on anomalous token use; never log token values for detection. | Medium: header is passed directly, but error triggering, storage and access are unknown. | High: usable credentials can allow impersonation. | high |
+| TM-005 | Tenant inducing errors | Error content contains attacker-controlled data; it is logged and downstream handling is unsafe or capacity is limited. | Inject misleading content or generate excessive errors. | Impaired investigation or log availability. | Logs, diagnostic integrity and availability | Structured object is passed to `logger.error` (`server.mjs:3`); actual serialization and controls unknown. | Error content, log encoding, quotas and reader behavior unknown. | Conditionally sanitize untrusted error fields, preserve structured encoding at ingestion and display, and bound error volume. | Monitor error spikes and ingestion failures; retain safe request correlation IDs. | Low: attacker influence and unsafe downstream handling both remain unverified. | Medium: investigations or log availability may be impaired. | low |
+
+These recommendations are conditional on the corresponding path and control gap being present. Even after remediation, verify effective enforcement at the real route, database, network and logging boundaries; this fixture cannot establish residual risk.
+
+## Criticality calibration
+
+- **Critical:** likely compromise of many tenants or core service with broad impact, such as unauthenticated access to all confidential notes, or a preview path exposing a broadly privileged service credential. Neither is established here.
+- **High:** plausible substantial confidentiality or integrity harm, such as cross-tenant note reads or credential theft from unredacted logs. TM-001, TM-002 and TM-004 are high only under their stated prerequisites.
+- **Medium:** material but bounded disruption or exposure, such as sustained preview-driven availability loss, or disclosure of a limited internal response without privileged data. Actual controls and blast radius determine placement.
+- **Low:** limited or difficult-to-exploit harm, such as a single misleading log record with intact structured handling, or a brief failed preview request contained by effective limits.
+
+## Focus paths for security review
+
+| Path | Why it matters | Related Threat IDs |
+|---|---|---|
+| `server.mjs` | Inspect tenant binding, URL fetch behavior and credential-bearing error logging at the actual integration points. | TM-001–TM-005 |
+| `README.md` | Establishes the supplied proxy, authentication, tenancy and confidentiality context to verify against deployment evidence. | TM-001–TM-005 |
+
+## Notes on use
+
+- Quality check: all three discovered functions and boundaries B1–B4 are represented in the abuse paths and threat table; runtime code is separated from exercise material and out-of-scope CI/dev tooling.
+- The confirmed context and inability to answer further are recorded above; unknowns and conditional rankings remain explicit. Static source and fixture inventory were inspected; no runtime, network, deployment, or security tests were performed.

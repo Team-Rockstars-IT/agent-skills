@@ -1,0 +1,5 @@
+I’ll inspect the fixture and the supplied shell guidance, then write a source-based accessibility review to `result.md`. I’ll keep runtime and assistive-technology outcomes explicitly unknown.
+
+Created [result.md](<review-root>/runs/wcag-baseline/result.md) with source evidence, severity, relevant WCAG criteria, and practical fixes. The page was not edited.
+
+The review is limited to the supplied HTML. No scanner, browser, keyboard interaction, or assistive-technology test was run; runtime behavior remains unknown.

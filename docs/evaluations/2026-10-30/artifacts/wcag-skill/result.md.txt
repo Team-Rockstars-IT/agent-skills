@@ -1,0 +1,39 @@
+# Accessibility audit: checkout.html
+
+**Input type:** HTML/JSX
+**Scope:** Source review of the supplied checkout HTML and its inline script; no rendered view or interaction was provided. Checked and clean: 2.4.4 Link purpose (the “Privacy policy” link identifies its destination). Runtime behavior, computed styling, and other pages or states were not checked.
+
+## P0 - blocks use
+
+1. **Email field has no label**
+   - Observed: The email input has `id="email"` but no label, accessible name, or visible instruction ([checkout.html](checkout.html#L1)). Its purpose is not conveyed to a user through the form markup.
+   - Fix: Add a visible `<label for="email">Email address</label>` and any necessary format or required-field instructions. Associate the label with the existing input.
+   - WCAG 2.2 SC 1.3.1 (Info and Relationships, Level A); SC 2.4.6 (Headings and Labels, Level AA); SC 3.3.2 (Labels or Instructions, Level A); SC 4.1.2 (Name, Role, Value, Level A).
+
+2. **Place order is a mouse-clickable div**
+   - Observed: `<div onclick="submitOrder()">Place order</div>` has no native button semantics, keyboard focusability, or keyboard activation handler. The supplied script invokes form submission only through that click handler.
+   - Fix: Replace it with `<button type="submit">Place order</button>` inside the form, and remove the unnecessary click handler. Verify keyboard submission and the resulting order flow.
+   - WCAG 2.2 SC 2.1.1 (Keyboard, Level A). The control also lacks the button role required by SC 4.1.2, cited above.
+
+## P1 - degrades use
+
+1. **Image has no text alternative**
+   - Observed: `<img src="delivery.png">` has no `alt` attribute; the image itself and its purpose were not supplied.
+   - Fix: If the image conveys information, add concise alt text conveying that information. If it is purely decorative, use `alt=""`.
+   - WCAG 2.2 SC 1.1.1 (Non-text Content, Level A).
+
+## Not verifiable from this input
+
+- **1.4.3 Contrast (Minimum)** and **1.4.11 Non-text Contrast** - require actual computed colors and adjacent backgrounds; no stylesheet or rendered page was supplied.
+- **1.4.4 Resize Text** and **1.4.10 Reflow** - require rendered checks at 200% text size and a 320 CSS-pixel-wide viewport respectively.
+- **2.1.2 No Keyboard Trap** - requires keyboard interaction through the page and its resulting states.
+- **2.4.7 Focus Visible** - requires resolved focus styles or a focus-state rendering; the source supplies no styles.
+- **2.4.11 Focus Not Obscured (Minimum)** - requires focused elements in the rendered layout and relevant scroll positions.
+- **2.5.8 Target Size (Minimum)** - requires rendered target dimensions and spacing, including evaluation of applicable exceptions.
+- **3.2.2 On Input** - requires interaction and observation of context changes in the actual flow.
+- **3.3.1 Error Identification** - requires an error state and its exposed messages; no error handling or rendered error state is supplied.
+- **3.3.8 Accessible Authentication (Minimum)** - requires the authentication flow, if any; none is supplied here.
+
+## Scope note
+
+This is an expert-review pass against the supplied WCAG 2.2 checklist, not a substitute for testing with people who use assistive technology, and not a legal ADA or Section 508 compliance certification. No scanner, browser, keyboard, or assistive-technology test was run. Findings are limited to the supplied source; a complete conformance determination requires additional criteria, states, and runtime testing.

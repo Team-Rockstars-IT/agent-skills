@@ -1,0 +1,15 @@
+# Assumption-validation check-in
+
+- The service is an internet-exposed, multi-tenant confidential notes API behind a trusted HTTPS proxy and trusted authentication middleware. Malicious authenticated tenants are in scope; operator host compromise and CI are out of scope. (Provided context; `README.md`.)
+- Tenant isolation is expected for note reads. `server.mjs`'s `getNote` passes a requested ID to `db.findNote`; the database implementation, routing, and any authorization outside this function are not present in the inspected source.
+- Assume authenticated tenants can influence the note ID and preview URL when these functions are exposed. `server.mjs` reads `request.params.id` and `request.body.url`, but actual routes, validation, and caller access are unknown.
+- Assume preview requests may reach resources accessible to the application process, and error logs may contain sensitive credentials. `server.mjs` calls `fetch` on the supplied URL and passes the authorization header to `logger.error`; network restrictions, logger behavior, and access to logs are unknown.
+- No runtime behavior, deployment controls, rate limits, or data-store isolation have been verified. The fixture provides no implementation evidence for them.
+
+## Questions
+
+1. How is tenant authorization enforced for note reads: in routing or middleware, inside `db.findNote`, through tenant-scoped database credentials or row-level security, or elsewhere? Can a tenant supply another tenant's note ID?
+2. Is `preview` available to authenticated tenants, and what URL, redirect, DNS, network-egress, response-size, and rate limits apply? Are internal services or cloud metadata reachable from its runtime?
+3. Where do error logs go, who can read them, and are authorization headers redacted before storage? What tenant scale and note sensitivity should inform impact ranking?
+
+This check-in is based on inspection of the supplied workflow, its prompt template, `README.md`, and `server.mjs`; no runtime tests were run. Awaiting clarification before the final threat model.

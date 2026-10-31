@@ -1,0 +1,11 @@
+I’ll inspect the supplied workflow and the fixture’s existing specification conventions, then write only the change specification and its review handoff.
+
+I’m treating this as one capability. My initial assumptions are that an existing note retains its identifier and body, and that ownership is determined by the project’s existing authorization model; I’ll check those against the fixture and flag any unresolved details for review.
+
+The fixture has a small JavaScript notes service and documents `node --test`; it has no configured build or lint command, and no existing `design/changes/` directory or tests are present. The current rename function does not enforce ownership or title validity, so the specification will describe the requested behavior as a change, with ambiguous validation and error details left for review.
+
+Created the [rename specification](design/changes/rename-own-note.md) and [review handoff](result.md). The specification covers successful renaming, ownership denial, invalid titles, unknown notes, and preservation of identity and content.
+
+Please review the open questions in the handoff and approve the specification or request changes. The supplied [workflow](reviewed-skill/SKILL.md) requires human review and says to “STOP YOUR TURN IMMEDIATELY” after saving the spec; planning therefore awaits a later approval.
+
+I inspected the fixture and documented commands. No runtime tests were run.

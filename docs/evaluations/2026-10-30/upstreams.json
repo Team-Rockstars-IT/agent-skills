@@ -1,0 +1,273 @@
+[
+  {
+    "id": "tdd",
+    "repo": "mattpocock/skills",
+    "prefix": "skills/engineering/tdd",
+    "commit": "a496f5513d4a4cf889bc48e189e579f4b0bdf6aa",
+    "committedAt": "2026-10-29T10:42:51Z",
+    "archived": false,
+    "licenseHint": "MIT",
+    "files": [
+      {
+        "path": "LICENSE",
+        "blob": "f1dd2c09108dde1a5f56097cee8461b3ea834499",
+        "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5"
+      },
+      {
+        "path": "README.md",
+        "blob": "f7038f139299985eea6c3e18398dbafb379a0010",
+        "sha256": "345041d56cf1411b6b3ca1cc54014d26c563890f817f4cb9e2cb193dcd771a3e"
+      },
+      {
+        "path": "skills/engineering/tdd/SKILL.md",
+        "blob": "01eadaa34e7c9a63a67d6dc3cce1cc81b0e49985",
+        "sha256": "5505d25bbaa8fc14a79e4d20163936958992a2995b7f1dd1d6197edc9ed722e0"
+      },
+      {
+        "path": "skills/engineering/tdd/agents/openai.yaml",
+        "blob": "651b838a7663e027b1b8884491e867f26bb9a021",
+        "sha256": "ea6f01cf1b8c06a4b0f5b649d74b1b8ce8685e72af1b38d70d877693e092af0b"
+      },
+      {
+        "path": "skills/engineering/tdd/mocking.md",
+        "blob": "71cbfee674d93244ce81d1830b930ca9a69200bd",
+        "sha256": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef"
+      },
+      {
+        "path": "skills/engineering/tdd/tests.md",
+        "blob": "7ab86479f925a1f9e8ba680af33cb3b12e015381",
+        "sha256": "859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a"
+      }
+    ]
+  },
+  {
+    "id": "sdd",
+    "repo": "addyosmani/agent-skills",
+    "prefix": "skills/spec-driven-development",
+    "commit": "eb07f19f52c2669f2364897aaa293e2aaddd7b1c",
+    "committedAt": "2026-10-29T05:06:57Z",
+    "archived": false,
+    "licenseHint": "MIT",
+    "files": [
+      {
+        "path": "LICENSE",
+        "blob": "d67778ada6b9cda6227e9130da182c13e73c8b2e",
+        "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7"
+      },
+      {
+        "path": "README.md",
+        "blob": "7f610b8ca80ff9bc7ba7f95f3209430c3481891d",
+        "sha256": "b74ab722eeee706ff1c5c3ee55f5f2328368ec28c6368900bc80b857b5bc6b72"
+      },
+      {
+        "path": "plugin.json",
+        "blob": "94ad60a304c44394362b2525c29d1354e6715d6b",
+        "sha256": "3077a7cd9bb75f5fe0d3bd0a4442c108df42cc97bf779add8f251d42c197cca1"
+      },
+      {
+        "path": "skills/spec-driven-development/SKILL.md",
+        "blob": "3fcc536f14f261dab1a785ef906ddf6f12074389",
+        "sha256": "b9d05b4259c14550bbffbaafd8201492129926d37ede716db352c6e4f91b404d"
+      }
+    ]
+  },
+  {
+    "id": "readiness",
+    "repo": "exadel-inc/agentic-readiness-assessment",
+    "prefix": "skills/agentic-readiness-assessment",
+    "commit": "1313702ad53e2f2c069e2f4ef2dbebd19cb17e3d",
+    "committedAt": "2026-10-27T09:45:05Z",
+    "archived": false,
+    "licenseHint": "Apache-2.0",
+    "files": [
+      {
+        "path": "LICENSE",
+        "blob": "5471dc10377b76db85a2feca7a99a7eef4980ba8",
+        "sha256": "600cc67cc4cb2f5ea317dcfc687ad1c74dc4bec8782bbe9db0afd83513b935b7"
+      },
+      {
+        "path": "NOTICE",
+        "blob": "ce1899e7aac2394e8059c3d596fe918330c447d8",
+        "sha256": "ed6c4b708393506a22baeb74d636167e795e71f187bc8d45f44a64cebee5e08b"
+      },
+      {
+        "path": "README.md",
+        "blob": "e3180c45f4ee4477b1c0e57984db4cb3de46d555",
+        "sha256": "6d985fbc3312f1b369102e379f49d6e5c1875288e4c9eb4b4148f334b986e2da"
+      },
+      {
+        "path": "plugin.json",
+        "blob": "89cf4d62efadc9f4c8d9256263f2b92caf9fb7d7",
+        "sha256": "7ba74b9c1dc3b50b819b50abce280cff21f90de586b4ce9395a936e3a601043d"
+      },
+      {
+        "path": "skills/agentic-readiness-assessment/SKILL.md",
+        "blob": "d329bc874ab06b12f4f5dd12fceb9bcfc5a5e223",
+        "sha256": "535e2c0a62115e54ca53e83deeef845bad85536f239acf0570a1aadb068d011c"
+      },
+      {
+        "path": "skills/agentic-readiness-assessment/references/agent-execution-contract.md",
+        "blob": "28d725f51b0b9fbf9ced2b5bf61c54efdf2a297f",
+        "sha256": "6160ef27f767fefba7330825e91fa56c0fbc5e716eb391e78f2f75825940f7ad"
+      },
+      {
+        "path": "skills/agentic-readiness-assessment/references/assessment-decision-record.md",
+        "blob": "cae0883d9f110025c37be3a50c2872a373fb707a",
+        "sha256": "ea4992a33f81cfa45058568ebb55163625fb1876f3591d33a2d3e6e2a23f89cf"
+      },
+      {
+        "path": "skills/agentic-readiness-assessment/references/report-contract.md",
+        "blob": "62e5b053fbecf88550ce911239794d1986676eae",
+        "sha256": "8a95d1737142e292083e1cb0bb40f4bfde077a8fd46e2eb5316e40b18229ca43"
+      },
+      {
+        "path": "skills/agentic-readiness-assessment/scripts/validate_report.py",
+        "blob": "18d591aff67581a4ef53dcd08e50116961403909",
+        "sha256": "33869744696947eabe79e665b389a4d5a28ed9fb1de8b557d5aedca1235d6310"
+      },
+      {
+        "path": "skills/agentic-readiness-assessment/tests/test_validate_report.py",
+        "blob": "177a6b70de77ac722e00ba698f5799c2a92b1ef8",
+        "sha256": "e80766df6cdf691776044f0e26c1a7da645531028d0eef348809a3891215594a"
+      }
+    ]
+  },
+  {
+    "id": "wcag",
+    "repo": "humbleteam/accessibility-audit",
+    "prefix": "",
+    "commit": "b5735da6c03604eea342a7de0e1e6c1d3550dca5",
+    "committedAt": "2026-10-29T07:02:25Z",
+    "archived": false,
+    "licenseHint": "MIT",
+    "files": [
+      {
+        "path": "LICENSE",
+        "blob": "96e8cfe2e724adca78b1ad55f97326e71c04ca3c",
+        "sha256": "c59197d6eba174ad7eda80c4bfb8af140307f523e516dfcd1903d9acc9b076b3"
+      },
+      {
+        "path": "README.md",
+        "blob": "24d9ab65706565c50988e65ac70f9c6af75ca2ee",
+        "sha256": "133635357389230c0d6d7a95475f2cc1db7cd2cd5856954101af865a96732d9f"
+      },
+      {
+        "path": "SKILL.md",
+        "blob": "501559573ff7e3ad10618419469d2a72c899b494",
+        "sha256": "9bb504dfccb54d9dc0c82fb58a6a336ca616fdc217233b0133ef7454a6eacae1"
+      },
+      {
+        "path": "references/wcag22-checklist.md",
+        "blob": "a3c8f8fa76090b2f1007d8a0764f8af3bfd9a6e9",
+        "sha256": "de97cc73843d8375393d4f1dd27b6b9f80deb2116cbefe9758cd8609e5e92cca"
+      }
+    ]
+  },
+  {
+    "id": "seo",
+    "repo": "coreyhaines31/marketingskills",
+    "prefix": "skills/seo-audit",
+    "commit": "820ad2c1c0ac4cc350158bd7912c753681a7d173",
+    "committedAt": "2026-10-29T17:22:37Z",
+    "archived": false,
+    "licenseHint": "MIT",
+    "files": [
+      {
+        "path": "LICENSE",
+        "blob": "7c48dd638a9ebed49a8ef0c0c4eea90105381cdf",
+        "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591"
+      },
+      {
+        "path": "README.md",
+        "blob": "1ca4e209a14ba26b362cc838ec61036130b520c3",
+        "sha256": "2ae2a80b25050eede87b72e4cb759b3205a21b2e96f2a862f8c5c291d3a7eaa3"
+      },
+      {
+        "path": "skills/seo-audit/SKILL.md",
+        "blob": "e0a41d8c46c06d1e33ce5295c0f303a94d8f6c5b",
+        "sha256": "e0ebb5808787f2ff26b96d7b429423874d9785541cd4ab775629a5cf1137e7a9"
+      },
+      {
+        "path": "skills/seo-audit/evals/evals.json",
+        "blob": "d569ae70cf4746f7a27e7808abbaea4878c27fd7",
+        "sha256": "1524e98916ab53abb894fb80827a8d0e1815041adca2ee2023b89916d68f22b2"
+      },
+      {
+        "path": "skills/seo-audit/references/ai-writing-detection.md",
+        "blob": "cb67ece4135f4153575bbbdfbf722364babff61d",
+        "sha256": "f1e273f56ce7e2215ff218bf903680ddcec0fd026ab90c3ebfb3439ed0edfaa4"
+      },
+      {
+        "path": "skills/seo-audit/references/international-seo.md",
+        "blob": "35a7ad2aeadcbef2541563b0077d5f717e4b147d",
+        "sha256": "0603022cca968acf7889fc224221aa0e70955ba64355bc18b06f7e86b32f45e5"
+      },
+      {
+        "path": "skills/seo-audit/references/local-seo-pages-and-measurement.md",
+        "blob": "d49f0443e091c70e4778a4e33030a33d18a361a4",
+        "sha256": "20607ef91c4b8b37346f42130a6f51ed4ce64dc2731b6e1328b5b14f16917fe3"
+      },
+      {
+        "path": "skills/seo-audit/references/local-seo-profile-and-citations.md",
+        "blob": "d34b7e043cb7c4d2da114f04e986bd476a22d0c6",
+        "sha256": "83b1b63eb6083e7aab1f56c4928335ea2a235e837861a9e9e8043b6af162a1f3"
+      },
+      {
+        "path": "skills/seo-audit/references/local-seo.md",
+        "blob": "c2636ada98809d6ed8db588040817adc332add5e",
+        "sha256": "d2666d9c225bc36f9737ce612894abbe7e263b5974e2db7c1efc50f6010bb376"
+      },
+      {
+        "path": "skills/seo-audit/references/rankings-push.md",
+        "blob": "5e3930e47e521cf3d27db2e7120ffde8ace3035d",
+        "sha256": "c21d6d4f9faf7ce5b1dc0f8bd508e7513967492fcd8ed9510a175ce243daf8c8"
+      },
+      {
+        "path": "skills/seo-audit/references/title-tags.md",
+        "blob": "5d5eac8002179ac5288f3b4bbd2aa35b3a409a42",
+        "sha256": "c40b3c6af3600ca15670db8eb81000c7ca6fa25265a6550ccc630f53db3fcf51"
+      }
+    ]
+  },
+  {
+    "id": "threat",
+    "repo": "openai/skills",
+    "prefix": "skills/.curated/security-threat-model",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "committedAt": "2026-06-24T02:36:12Z",
+    "archived": false,
+    "licenseHint": null,
+    "files": [
+      {
+        "path": "README.md",
+        "blob": "c205d307226b98189c28cbcce6ff792cbb7b2d05",
+        "sha256": "0f6a07580f3c627253e15a58dd0439e135049ec38eb16cf3587f7e50abc6f590"
+      },
+      {
+        "path": "skills/.curated/security-threat-model/LICENSE.txt",
+        "blob": "13e25df86ce06eb6488e6a6bc5c5847f5dedc352",
+        "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9"
+      },
+      {
+        "path": "skills/.curated/security-threat-model/SKILL.md",
+        "blob": "abd3c1c95d49c4e0e0664f198f4bf168c6291aec",
+        "sha256": "1283c0dd62a8104d9edda4583569b5d8510b4ddaa45120687c999250fd96bad2"
+      },
+      {
+        "path": "skills/.curated/security-threat-model/agents/openai.yaml",
+        "blob": "d8b04e20a62688188f19bd396ae6b923841ddf8e",
+        "sha256": "3319b59736312abceca614e341c0e59cae47263e3b58a22b2b5ddf1e5fc8c227"
+      },
+      {
+        "path": "skills/.curated/security-threat-model/references/prompt-template.md",
+        "blob": "b6affb0d2f873ffe398f7a8df00095dc0ff01f59",
+        "sha256": "81a59aa3fb3ac3a739d6a26ab38e4015965f215581ee54becef21a2b121ec29b"
+      },
+      {
+        "path": "skills/.curated/security-threat-model/references/security-controls-and-assets.md",
+        "blob": "63d1455aeacfc97eaca4e371040dbadfbd791635",
+        "sha256": "d536cfa9acad2523dc39134bcf33b9566c29dd9a57b407cbc9901637230c6b98"
+      }
+    ]
+  }
+]

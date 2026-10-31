@@ -1,0 +1,9 @@
+I’ll inspect the fixture and its existing test conventions, then add and run a failing behavioral test before implementing the rename operation. I’ll keep all changes inside the fixture and record the checks in `result.md`.
+
+The existing function changes any found note’s title without checking ownership or trimming it. I’m adding tests for the successful rename and each rejection, including checks that rejected calls leave the stored note unchanged.
+
+The behavioral test failed as expected: trimming, ownership, and whitespace rejection each exposed a defect; the unknown-ID check already passed. I’ll add validation before the title is changed.
+
+Implemented `renameNote` with owner checks and trimmed, nonempty titles. Unknown IDs, non-owners, and invalid titles are rejected before mutation; body and identity are preserved.
+
+The behavioral tests failed before implementation and passed afterward: **4 tests passed** with `node --test`. The execution account is in [result.md](<review-root>/runs/tdd-baseline/result.md).

@@ -1,0 +1,7 @@
+I’ll read the supplied check-in and inspect the fixture’s relevant code and configuration, then write the threat model and a concise result summary with explicit assumptions and evidence limits.
+
+The fixture exposes three narrow code paths: note lookup, URL preview, and error logging. Their surrounding authorization, network policy, and logging behavior are absent, so the risk ratings will be conditional rather than claims of verified exploitation.
+
+Created the [threat model](<review-root>/runs/threat-followup-baseline/threat-model.md) and [result summary](<review-root>/runs/threat-followup-baseline/result.md).
+
+The main conditional risks are cross-tenant note access, server-side requests to sensitive destinations, credential exposure in logs, and preview resource exhaustion. The assessment is based on static fixture inspection; runtime behavior and controls outside the visible functions remain unknown.

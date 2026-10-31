@@ -1,0 +1,55 @@
+# Product page SEO audit
+
+## Executive summary
+
+The supplied snapshot describes a public product page at `https://notes.invalid/product` that should be indexable. Its HTML contains a `noindex` directive and points its canonical to `/unrelated`; both conflict with that intent. The snapshot also lacks a title and meta description, and gives readers very little product information. Fix the indexing signals first, then improve the page's search presentation and useful content. This is a snapshot review, not a live-site or site-wide audit.
+
+## Technical findings
+
+### 1. Noindex on an intended public page
+
+- **Priority / potential impact:** Critical / High.
+- **Evidence:** `page.html` contains `<meta name="robots" content="noindex">`; `README.md` says the product page should be indexable.
+- **Fix:** Remove the `noindex` directive from the production page template for this URL. When runtime access is available, check the served HTML and `X-Robots-Tag` response headers, then use Search Console URL Inspection to verify Google's observed directives and request indexing after deployment. Removal permits indexing; it does not guarantee it.
+
+### 2. Canonical points away from the product
+
+- **Priority / potential impact:** Critical / High.
+- **Evidence:** The snapshot's canonical is `https://notes.invalid/unrelated`, while the stated page URL is `https://notes.invalid/product`. The destination's content and response are not supplied.
+- **Fix:** If `/product` is the intended unique canonical, replace the link with `<link rel="canonical" href="https://notes.invalid/product">`. Confirm the preferred URL and destination behavior when runtime evidence is available. A canonical is a signal, not a guarantee of Google's selection.
+
+The supplied `robots.txt` has `User-agent: *` and `Allow: /`, so it contains no stated disallow rule. That is not proof of the live file, successful crawling, or indexation. It contains no sitemap reference; sitemap existence and submission are unknown, so confirm those separately rather than treating the missing reference as a blocker.
+
+## On-page findings
+
+### 3. Missing title and description
+
+- **Priority / potential impact:** High / Medium.
+- **Evidence:** The supplied `page.html` head has no `<title>` or meta description. Its H1 is `Private notes`.
+- **Fix:** Add a descriptive, unique title aligned with the product and H1, for example `Private Notes for Teams`, subject to confirmation of the product's positioning and target query. Add a factual description, for example `Fast private notes for teams.` Expand it with verified benefits. Search engines may choose their own title or snippet. No search-results comparison was possible offline, so these are provisional copy suggestions, not validated keyword targeting.
+
+### 4. Missing viewport declaration
+
+- **Priority / potential impact:** Medium / Medium, conditional on rendered mobile behavior.
+- **Evidence:** No viewport meta tag appears in the supplied head.
+- **Fix:** Add `<meta name="viewport" content="width=device-width, initial-scale=1">` and test the rendered page on mobile for legibility, layout and controls. The snapshot alone does not establish a mobile usability failure.
+
+## Content finding
+
+### 5. Little product detail in the supplied HTML
+
+- **Priority / potential impact:** High / Medium.
+- **Evidence:** Beyond the H1, the only paragraph is `Fast private notes for teams.` The image has `alt="Notes editor"`, but its contents were not supplied.
+- **Fix:** Add accurate, useful information about what the product does, who it serves, how team privacy works, and relevant capabilities or limitations, once verified. Link to relevant supporting and conversion pages where they exist. Do not invent features or privacy guarantees. The existing H1 is present and the image has alt text; whether that alt describes the actual image cannot be checked here.
+
+## Action plan and verification
+
+1. **Critical:** Remove `noindex` and correct the canonical together, after confirming the preferred product URL.
+2. **High:** Add a truthful title and description, and expand the product content using verified facts.
+3. **Quick win:** Add the viewport declaration and check the actual mobile rendering.
+4. **After deployment, when access is available:** Inspect served status, redirects, response headers, rendered HTML, robots rules and canonical; check URL Inspection and sitemap inclusion/submission. Review relevant Search Console queries and search results before finalizing query-focused copy. Establish a baseline before evaluating later changes.
+5. **Longer term:** Review relevant internal links, product evidence and other pages with a crawl and analytics data. Inspect rendered structured data or use a suitable validation tool if schema is relevant.
+
+## Scope and unknowns
+
+Checks performed: read the provided `README.md`, `page.html` and `robots.txt`, and reviewed the supplied skill and its title-tag and rankings references. No live fetch, browser rendering, response-header check, Search Console, analytics, performance measurement or search-results comparison was performed. Actual index status, crawlability in production, sitemap, HTTP status and redirects, mobile rendering, Core Web Vitals, rankings, traffic, competitors, keyword priorities, internal links, and structured data in rendered output or elsewhere on the site remain unknown. No traffic or ranking improvement is asserted.

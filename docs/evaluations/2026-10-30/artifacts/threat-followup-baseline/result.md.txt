@@ -1,0 +1,7 @@
+# Threat-model check-in result
+
+The repository-grounded [threat model](threat-model.md) identifies conditional risks in note authorization, URL previews, error logging and preview resource consumption. The highest potential confidentiality impacts are cross-tenant note disclosure and server-side requests to reachable sensitive destinations; credential exposure in logs is also consequential if sensitive headers reach readers. Actual exploitability and existing controls outside the three visible functions remain unknown.
+
+The model states the confirmed deployment and authentication context, unresolved assumptions, trust boundaries, likelihood and impact conditions, and recommended controls with source anchors. It prioritizes verifying object authorization and outbound access, then log sanitization and resource limits.
+
+Checks performed: read `previous-check-in.txt`, `README.md`, and `server.mjs` and inspected their line-numbered content; listed fixture files. No runtime, network, database, middleware, proxy, or log-sink test was performed. A Git status check could not run because this fixture is not a Git repository.

@@ -1,0 +1,19 @@
+I’ll inspect the supplied workflow and the fixture, then save an assumption-validation check-in to `result.md` and stop before producing the threat model.
+
+Saved the check-in to [result.md](<review-root>/runs/threat-skill/result.md). The final threat model is paused pending your answers.
+
+Key assumptions:
+
+- The service is an internet-exposed, multi-tenant confidential notes API behind a trusted HTTPS proxy and authentication middleware. Malicious authenticated tenants are in scope; operator host compromise and CI are out of scope.
+- Tenant isolation is expected for note reads. `getNote` passes a requested ID to `db.findNote`; authorization outside that function and the database implementation are unknown.
+- Authenticated tenants may be able to influence note IDs and preview URLs. Actual routes, validation, and caller access are unknown.
+- Preview requests may reach resources accessible to the application, and error logs may contain credentials. Network restrictions, logger behavior, and log access are unknown.
+- Runtime behavior, deployment controls, rate limits, and data-store isolation have not been verified.
+
+Please confirm or correct these assumptions:
+
+1. Where is tenant authorization enforced for note reads? Can a tenant supply another tenant’s note ID?
+2. Can authenticated tenants use `preview`? What URL, redirect, DNS, egress, response-size, and rate limits apply, and can its runtime reach internal services or cloud metadata?
+3. Where are error logs stored, who can read them, and are authorization headers redacted? What tenant scale and note sensitivity should inform impact ranking?
+
+I inspected the supplied workflow, its prompt template, `README.md`, and `server.mjs`. No runtime tests were run.

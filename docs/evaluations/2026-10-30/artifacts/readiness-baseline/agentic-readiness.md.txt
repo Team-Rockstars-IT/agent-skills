@@ -1,0 +1,23 @@
+# Agent-assisted development readiness
+
+## Assessment
+
+The fixture is easy to inspect and run locally, but its current verification is too narrow to give an agent confidence that changes preserve important behavior. Readiness is limited for unattended changes; a human should define the authorization contract and review changes until the missing checks are in place. This assessment covers the files present in this synthetic fixture only.
+
+## Prioritized findings and proposed fixes
+
+1. **High — ownership behavior is unprotected and unspecified.** `src/notes.mjs:2` accepts `actor` but never uses it; it changes a matching note regardless of owner. A local in-memory probe using actor `bob` changed Alice's `n1` title and returned the modified note. The probe restored the array and confirmed equality with its initial state. If ownership is intended to restrict edits, this is an authorization defect; the repository does not state that contract, so intended policy remains unknown. Define the policy and enforce it at the appropriate boundary, with tests for owner, non-owner and absent actor. Confidence: high in observed behavior; conditional on the intended policy for its severity.
+2. **High — the test does not protect the behavior an agent may change.** `tests/notes.test.mjs:1` asserts only the returned title for one successful call. It does not check owner isolation, preservation of other fields, the missing-ID error or shared-state behavior. Define expected outcomes and add independent tests for those cases, including rejection without mutation where required. Confidence: high in the coverage observation; the complete intended contract is unknown.
+3. **Medium — mutable shared state complicates isolation.** `src/notes.mjs:1-2` exports the mutable array and changes it in place; the existing test leaves it changed for the life of its process. Additional tests or agent experiments in the same process can depend on order, and callers can bypass `renameNote`. Clarify whether this public mutability is intentional; if not, encapsulate state and provide isolated setup/reset mechanisms. Confidence: high in the code behavior; impact depends on consumers and intended API.
+4. **Medium — operating and acceptance guidance is sparse.** `README.md:1` identifies the source and one test command, and `AGENTS.md:1` supplies local safety constraints. Neither describes expected ownership, input validation, API/state lifecycle, or acceptance criteria. Document these decisions and a minimal change-verification workflow so an agent can distinguish intended behavior from a regression. Confidence: high for the inspected files; other context outside the fixture was not assessed.
+
+## Checks actually run
+
+- `rtk proxy node --version`: Node v24.22.1.
+- `rtk proxy node --test tests/notes.test.mjs`: passed, 1 test, 0 failures. This proves only the existing assertion on this runtime.
+- A single reversible in-memory Node probe invoked `renameNote('bob', 'n1', 'Probe')`; it returned Alice's changed note, then restored the original array and printed `restored=true`. It did not write repository files.
+- File inventory and source/document inspection were performed locally. `git status --short` reported that this directory is not a Git repository, so a Git-based baseline or diff could not be established. A first PowerShell content-listing command failed due to quoting and was replaced by a successful local Node read.
+
+## Limits and confidence
+
+No application integration, external consumers, CI, deployment, or independent agent/harness tool telemetry was verified. Their absence from this fixture or from the available runtime evidence is not proof of a repository defect. The fixture's event and stderr files are session/environment data, not evidence of product correctness. No network, dependencies, or installs were used; no findings were remediated. Recommendations are prioritized by potential impact and observed test gaps, not by a verified production threat model.

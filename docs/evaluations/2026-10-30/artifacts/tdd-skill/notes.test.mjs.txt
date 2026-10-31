@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { renameNote } from './notes.mjs';
+
+test('owner can rename a note with a trimmed title while preserving its contents and identity', () => {
+  assert.deepEqual(renameNote('alice', 'n1', '  New title  '), {
+    id: 'n1', owner: 'alice', title: 'New title', body: 'Keep me',
+  });
+});
+
+test('a non-owner cannot rename a note', () => {
+  assert.throws(() => renameNote('bob', 'n1', 'Intrusion'));
+});
+
+test('an owner cannot rename a note to whitespace', () => {
+  assert.throws(() => renameNote('alice', 'n1', ' \t\n '));
+});

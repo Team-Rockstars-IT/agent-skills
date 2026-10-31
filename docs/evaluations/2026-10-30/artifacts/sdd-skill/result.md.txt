@@ -1,0 +1,12 @@
+# Specification review
+
+Specification: `design/changes/rename-own-note.md`
+
+Please review and approve the specification or request changes. Review questions:
+
+1. Preserve or trim surrounding title whitespace? Any length or character limits?
+2. What errors should callers receive for invalid input, permission denial, and an unknown note? Should denial and missing notes be distinguishable?
+3. What is the error precedence when multiple conditions fail, and should renaming to the existing title succeed?
+4. Is in-memory persistence sufficient, or must a rename survive a process restart?
+
+Checks: inspected the supplied workflow, README, source, and fixture layout. No runtime tests were run.

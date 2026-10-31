@@ -1,0 +1,13 @@
+I’ll inspect the fixture and its stated trust boundaries, then save a concise set of assumption-validation questions in `result.md` without modifying source.
+
+The assumption-validation questions are saved in [result.md](<review-root>/runs/threat-baseline/result.md). Please answer them before the final threat model is written.
+
+1. How are users associated with tenants, and who may read a note: its owner, tenant members, or explicitly shared users? Are note IDs globally unique and unguessable?
+2. Where is authorization enforced for `getNote`? Does `db.findNote(id)` apply tenant or user scoping, or is access checked before the handler? What happens for missing or unauthorized IDs?
+3. Who can invoke `preview`, and what URLs and response content are legitimate? Are schemes, hosts, redirects, DNS resolution, private or link-local addresses, response sizes, and timeouts restricted?
+4. Which network destinations and credentials can the application reach, including internal services and cloud metadata? Are outbound requests filtered?
+5. Where do error logs go, who can read them, how long are they retained, and are authorization headers or error contents redacted downstream? Can the header contain bearer tokens or other secrets?
+6. What other routes, data stores, middleware, deployment configuration, and client behavior belong to the system? Are there rate or size limits at the proxy or elsewhere?
+7. Are availability and abuse costs in scope alongside confidentiality and tenant isolation? Are there other assets, trust boundaries, or exclusions to include?
+
+I reviewed `README.md` and `server.mjs` statically. No runtime or network checks were performed, so runtime behavior remains unknown.
