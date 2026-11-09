@@ -1,9 +1,36 @@
 # Team Rockstars Agent Skills
 
-Reference library for agent-assisted work across disciplines, with a broad
-[catalog](catalog/README.md), a [skill selection report](docs/skill-selection-report.md)
-and [guidance for choosing a starting workflow](docs/start-here.md).
-Third-party implementations are retrieved from their canonical upstream.
+A recipe book and reference catalog for agentic work across disciplines.
+Start with the result you need, choose a recipe, then select the skills and
+tools that help you deliver it. Third-party implementations stay upstream;
+this catalog does not install them.
+
+## Find your starting point
+
+| What do you need? | Start here |
+| --- | --- |
+| Help choosing skills and tools | [Ask your agent](docs/start-here.md#ask-your-agent-to-help-choose) to read [AGENTS.md](AGENTS.md) |
+| A route through the options | [Decision tree, experience routes and layers](docs/start-here.md) |
+| Steps for a concrete type of work | [Recipe book](recipes/README.md) |
+| An agent readiness scan | [Readiness recipe](recipes/repository-readiness.md): lightweight context check or comprehensive upstream assessment |
+| A specific discipline or tool | [Catalog](catalog/README.md) |
+| Evidence behind a recommendation | [Selection report](docs/skill-selection-report.md) and [dated evaluations](docs/evaluations/2026-10-30/README.md) |
+
+For example, ask your agent:
+
+```text
+Read AGENTS.md in this repository. I want to [goal] on [project/source]
+using [agent client]. Recommend one recipe, the minimum skills and tools,
+and a concrete first step. Explain evidence and limitations. Give advice
+only; do not install anything or change my project.
+```
+
+The readiness scan is included as a
+[catalog reference](catalog/skills/development/agentic-readiness-assessment.md)
+to Exadel's skill, with an evaluation on one synthetic repository. Its
+implementation is retrieved upstream when deliberately selected.
+
+## Background
 
 The three original Claude Code skills operationalize the engineering discipline described in
 [Team Rockstars IT](https://www.teamrockstars.nl)'s *AI-Assisted Development
@@ -23,7 +50,7 @@ Skills package reusable instructions and may include scripts and resources.
 Discovery paths, triggering and invocation depend on the chosen harness;
 see [portability](docs/portability.md).
 
-## Start here: reference library
+## Browse references and evidence
 
 This repository combines original skills with a technology-agnostic,
 reference-first starter catalog. Third-party implementations stay upstream.

@@ -2,10 +2,15 @@
 
 Select by outcome, authority and constraints; start with one workflow and add another for a distinct gap.
 
+Use the [decision tree](start-here.md#decision-tree) to choose a recipe first.
+For agent-assisted selection, read [AGENTS.md](../AGENTS.md) and the
+[selection recipe](../recipes/choose-your-setup.md). The table below narrows
+the procedure after the desired output is clear.
+
 | Need | Start | Add when needed |
 | --- | --- | --- |
 | Unclear work | [define-work](../define-work/SKILL.md) | [OpenSpec](../catalog/skills/development/openspec.md) for durable specifications |
-| Readiness | [Agentic Readiness Assessment](../catalog/skills/development/agentic-readiness-assessment.md) | [agents-md](../agents-md/SKILL.md) to draft instructions |
+| Readiness | [Readiness recipe](../recipes/repository-readiness.md): lightweight check or deliberate comprehensive assessment | [agents-md](../agents-md/SKILL.md) to draft instructions from observed context |
 | Behavioral change | [Matt Pocock TDD](../catalog/skills/development/matt-pocock.md) | reproduce-first diagnosis for hard bugs |
 | Architecture | [enterprise architecture](../catalog/skills/architecture/enterprise-architecture.md) | codebase architecture workflow |
 | Research | [research](../catalog/skills/research/README.md) | [Context7](../catalog/tools/context-and-retrieval/context7.md) for supported documentation |
