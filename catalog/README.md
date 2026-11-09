@@ -5,6 +5,10 @@ task routes in the [README](../README.md) or ask your agent to read
 [AGENTS.md](../AGENTS.md). The [full recipe index](../recipes/README.md)
 includes steps for each output and workflow improvements.
 
+Find concrete upstream choices by [goal, category and programming language](../docs/skill-finder.md).
+The focused finder links exact revisions and distinguishes skills from
+workflow tools such as OpenSpec and Spec Kit.
+
 Read the [selection guide](../docs/selection-guide.md) when combining ingredients.
 Recommendations are scoped judgments; source-reviewed does not mean
 runtime-tested. Implementations stay upstream. A discipline index can include

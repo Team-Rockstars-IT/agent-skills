@@ -30,6 +30,7 @@ Only explore more tooling when you can name a problem:
 
 - Cost or context volume: [token-efficient workflow](../recipes/token-efficient-workflow.md).
 - Coordination of separable tasks: [orchestration selection](../recipes/orchestration-selection.md).
+- Recurring session friction: [session retrospective](../recipes/session-retrospective.md).
 
 For ingredient details, browse the [catalog](../catalog/README.md). The
 [selection guide](selection-guide.md) explains the layers and conflicts;

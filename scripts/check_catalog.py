@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 import sys
 from urllib.parse import unquote, urlsplit
+from skill_catalog import check_generated
 
 ROOT = Path(__file__).resolve().parents[1]
 FIELDS = ("ID", "Type", "Primary category", "Tags", "Upstream", "Recommendation",
@@ -73,8 +74,11 @@ for path in ROOT.rglob("*.md"):
         if not (path.parent / unquote(url.path)).exists():
             errors.append(f"{path}: broken link {target}")
 
+errors.extend(check_generated())
+
 if errors:
     print("\n".join(errors))
     sys.exit(1)
 print(f"OK: {len(entries)} catalog entries; fields, IDs, categories, dates, template, table widths and local file links validated")
+print("OK: focused upstream metadata and generated finder/recipe views are consistent")
 print("Not checked: external links/anchors, source claims, licenses, skill behavior or harness compatibility")

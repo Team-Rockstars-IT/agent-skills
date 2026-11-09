@@ -20,6 +20,16 @@ work repeatedly stalls.
 - **Harness:** a client compatible with the selected upstream instructions;
   check actual access and execution support before starting.
 
+<!-- recipe-skills:start -->
+## Upstream choices
+
+Choose one when it fits; these are optional choices, not an install bundle. [Tag meanings](../docs/skill-finder.md#tags-and-programming-languages).
+
+| Use when | Skill and source | Tags | Evidence |
+| --- | --- | --- | --- |
+| Run a deliberate comprehensive repository-readiness assessment. | [Exadel · /agentic-readiness-assessment](https://github.com/exadel-inc/agentic-readiness-assessment/blob/1313702ad53e2f2c069e2f4ef2dbebd19cb17e3d/skills/agentic-readiness-assessment/SKILL.md) | `goal:readiness` `category:development` `language:any` | [locally-tested](../docs/evaluations/2026-10-30/README.md): One synthetic repository on 2026-10-30; validator run separately by evaluator. |
+<!-- recipe-skills:end -->
+
 ## Steps
 
 1. Choose the scope. A lightweight check reads existing instructions, entry

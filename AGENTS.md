@@ -10,6 +10,10 @@ implementations live in `define-work/`, `agents-md/` and `pr-evidence/`.
    and authorized read-only discovery to select one recipe. Read that recipe
    and only the relevant catalog entries. Use the [full index](recipes/README.md)
    for workflow improvements or other needs; do not load the whole library.
+   For a named upstream skill or goal/category/programming-language search, use
+   [the focused finder](docs/skill-finder.md) or `python scripts/skill_catalog.py search`.
+   `language:any` means no particular programming-language requirement, not
+   verified compatibility with every stack. Distinguish skills from toolkits.
 2. Start with the user's existing agent and tools. Recommend at most one
    primary skill initially, and additional tools only for a concrete missing
    capability. A simple task may need nothing extra. Do not make the user
@@ -47,7 +51,10 @@ reuse its score for another project. For a genuine coverage gap, use
   scope unless already authorized, including installs or changes to other
   projects. Never expose private data/secrets or fabricate sources or results.
 - Run `python scripts/check_catalog.py` and `git diff --check`. The checker
-  covers metadata, table widths and local file links, not external links,
+  also validates the focused index and generated recipe tables. After editing
+  `catalog/recipe-skills.json`, run `python scripts/skill_catalog.py build`.
+  For search/generator code changes, run `python -m unittest discover -s scripts -p test_skill_catalog.py`.
+  Checks cover metadata, table widths and local file links, not external links,
   anchors, source claims, skill execution or client compatibility. Review
   changed aspects separately as needed. There is no application build.
 - Report changes, actual check outcomes and material limits.

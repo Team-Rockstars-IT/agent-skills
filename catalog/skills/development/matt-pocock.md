@@ -8,18 +8,39 @@
 - **Recommendation:** recommended-for-focused-engineering-workflows — for focused test-first or reproduce-first work.
 - **Evidence:** locally-tested for the pinned TDD skill on one synthetic task; other collection skills remain source-reviewed only. See [evaluation](../../../docs/evaluations/2026-10-30/README.md).
 - **Lifecycle:** unknown; check current upstream activity.
-- **Last reviewed:** 2026-10-30
+- **Last reviewed:** 2026-11-09
 - **License:** MIT; check current upstream terms.
 
 ## Purpose and output
 
 TDD, diagnosis, planning, research and review workflows.
 
-Start with [TDD](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/SKILL.md) for behavioral tests, [diagnosing bugs](https://github.com/mattpocock/skills/blob/main/skills/engineering/diagnosing-bugs/SKILL.md) for difficult failures, or [research](https://github.com/mattpocock/skills/blob/main/skills/engineering/research/SKILL.md) for a cited investigation. The current TDD skill asks for test seams to be agreed and places refactoring in review, so inspect that workflow and reconcile it with the task's instructions.
+Start with [TDD](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/SKILL.md) for behavioral tests, [diagnosing bugs](https://github.com/mattpocock/skills/blob/main/skills/engineering/diagnosing-bugs/SKILL.md) for difficult failures, or [research](https://github.com/mattpocock/skills/blob/main/skills/engineering/research/SKILL.md) for a cited investigation. The evaluated TDD revision asks for agreed test seams and places refactoring in review; inspect the selected revision and reconcile it with the task's instructions.
 
 ## Use or skip
 
 Use for focused test-first or reproduce-first work. Skip for trivial changes.
+
+## Concrete choices reviewed on 2026-11-09
+
+The [focused finder](../../../docs/skill-finder.md) links exact revisions for
+`tdd`, `diagnosing-bugs`, `research`, `improve-codebase-architecture` and
+`retro`. The prior TDD fixture result applies only to its pinned 2026-10-30
+evaluation revision, not the complete collection or a new upstream version.
+The newly inspected workflows have source-review evidence only.
+
+- `diagnosing-bugs`: create a runnable reproduction/feedback loop before the fix.
+- `research`: requires a background agent and writes cited findings to Markdown.
+- `improve-codebase-architecture`: deliberate user invocation, helper skills and
+  a fresh subagent; creates an HTML report with CDN assets, then an interactive
+  follow-up that can update the glossary and decision records. The main skill
+  was inspected; its complete helper chain was not reviewed or executed.
+- [`retro`](matt-pocock-retro.md): explicitly review a session for environment
+  improvements; depends on `writing-for-agents` and session evidence.
+
+Current source reviews use commit
+[`4ae2317d`](https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d).
+Follow the relevant recipe's exact link for the source supporting its label.
 
 ## Requirements and tradeoffs
 

@@ -31,6 +31,20 @@ research, product, operations, data or communication rather than a code change.
 | SEO or marketing review | [Marketing](../catalog/skills/marketing-discovery/README.md) | The tested SEO revision is excluded from default recommendations |
 | Learning or reflection | [Personal development](../catalog/skills/personal-development/README.md) | Coverage is limited; report gaps instead of inventing a skill |
 
+<!-- recipe-skills:start -->
+## Upstream choices
+
+Choose one when it fits; these are optional choices, not an install bundle. [Tag meanings](../docs/skill-finder.md#tags-and-programming-languages).
+
+| Use when | Skill and source | Tags | Evidence |
+| --- | --- | --- | --- |
+| Create architecture views, decision records or an enterprise model. | [Gaurav Sharma · /enterprise-architecture](https://github.com/gauravs19/enterprise-architecture-skill/blob/898fca2b7aa75a725284411f8f125861245f15a8/SKILL.md) | `goal:architecture` `goal:decision-records` `category:architecture` `language:any` | [source-reviewed](../catalog/skills/architecture/enterprise-architecture.md): Exact instruction file reviewed; not locally executed. |
+| Explore codebase friction and opportunities to deepen modules. | [Matt Pocock · /improve-codebase-architecture](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/improve-codebase-architecture/SKILL.md) | `goal:architecture` `goal:maintainability` `category:architecture` `category:development` `language:any` | [source-reviewed](../catalog/skills/development/matt-pocock.md): Main SKILL.md reviewed; helper chain not fully reviewed or executed. |
+| Investigate a question using primary sources and produce cited findings. | [Matt Pocock · /research](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/research/SKILL.md) | `goal:research` `category:research` `language:any` | [source-reviewed](../catalog/skills/development/matt-pocock.md): Exact instruction file reviewed; not locally executed. |
+| Review supplied web markup or visuals against a bounded accessibility checklist. | [Humbleteam · /accessibility-audit](https://github.com/humbleteam/accessibility-audit/blob/b5735da6c03604eea342a7de0e1e6c1d3550dca5/SKILL.md) | `goal:accessibility` `category:accessibility-ux` `language:any` | [locally-tested](../docs/evaluations/2026-10-30/README.md): One static HTML fixture on 2026-10-30; no full conformance assessment. |
+| Model repository-grounded assets, trust boundaries, abuse paths and mitigations. | [OpenAI · /security-threat-model](https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-threat-model/SKILL.md) | `goal:security` `goal:threat-modeling` `category:security-privacy` `language:any` | [locally-tested](../docs/evaluations/2026-10-30/README.md): One synthetic threat-model task and follow-up on 2026-10-30. |
+<!-- recipe-skills:end -->
+
 ## Steps
 
 1. Define the question, audience, expected artifact and what evidence is needed.

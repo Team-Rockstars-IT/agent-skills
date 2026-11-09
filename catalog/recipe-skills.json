@@ -1,0 +1,415 @@
+[
+  {
+    "id": "matt-tdd",
+    "name": "tdd",
+    "source": "Matt Pocock",
+    "upstream": "https://github.com/mattpocock/skills/blob/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/tdd/SKILL.md",
+    "catalog_entry": "catalog/skills/development/matt-pocock.md",
+    "goals": [
+      "testing"
+    ],
+    "categories": [
+      "development"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "testgestuurd",
+      "gedrag testen",
+      "red green"
+    ],
+    "use_when": "Implement behavior test-first at agreed public interfaces.",
+    "limits": "Agree test seams first; the reviewed revision puts refactoring in review.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "locally-tested",
+    "evidence_scope": "One synthetic TDD task on 2026-10-30; this pinned revision only.",
+    "evidence_reference": "docs/evaluations/2026-10-30/README.md",
+    "runtime_notes": "No specific programming language required by the instruction file.",
+    "recipes": [
+      "recipes/minimal-agent-workflow.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "matt-diagnosing-bugs",
+    "name": "diagnosing-bugs",
+    "source": "Matt Pocock",
+    "upstream": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/diagnosing-bugs/SKILL.md",
+    "catalog_entry": "catalog/skills/development/matt-pocock.md",
+    "goals": [
+      "debugging"
+    ],
+    "categories": [
+      "development"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "bug",
+      "fout",
+      "traag",
+      "diagnose",
+      "reproduceren"
+    ],
+    "use_when": "Investigate a difficult bug or performance regression with a repeatable feedback loop.",
+    "limits": "Needs a reproducing environment and runnable checks; redact captured credentials.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "source-reviewed",
+    "evidence_scope": "Exact instruction file reviewed; not locally executed.",
+    "evidence_reference": "catalog/skills/development/matt-pocock.md",
+    "runtime_notes": "No specific programming language required by the instruction file.",
+    "recipes": [
+      "recipes/minimal-agent-workflow.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "addy-spec-driven-development",
+    "name": "spec-driven-development",
+    "source": "Addy Osmani",
+    "upstream": "https://github.com/addyosmani/agent-skills/blob/eb07f19f52c2669f2364897aaa293e2aaddd7b1c/skills/spec-driven-development/SKILL.md",
+    "catalog_entry": "catalog/skills/development/addy-osmani.md",
+    "goals": [
+      "specification"
+    ],
+    "categories": [
+      "development",
+      "product-strategy"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "spec",
+      "sdd",
+      "specificatie",
+      "requirements",
+      "acceptatiecriteria"
+    ],
+    "use_when": "Specify a larger or ambiguous change before planning and coding.",
+    "limits": "Stops after the specification for human review; later phases and helper skills were not evaluated.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "locally-tested",
+    "evidence_scope": "Specification phase only, one synthetic task on 2026-10-30.",
+    "evidence_reference": "docs/evaluations/2026-10-30/README.md",
+    "runtime_notes": "No specific programming language required by the instruction file.",
+    "recipes": [
+      "recipes/minimal-agent-workflow.md",
+      "recipes/spec-driven-development.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "enterprise-architecture",
+    "name": "enterprise-architecture",
+    "source": "Gaurav Sharma",
+    "upstream": "https://github.com/gauravs19/enterprise-architecture-skill/blob/898fca2b7aa75a725284411f8f125861245f15a8/SKILL.md",
+    "catalog_entry": "catalog/skills/architecture/enterprise-architecture.md",
+    "goals": [
+      "architecture",
+      "decision-records"
+    ],
+    "categories": [
+      "architecture"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "architectuur",
+      "c4",
+      "adr",
+      "archimate",
+      "togaf",
+      "arc42",
+      "diagram",
+      "besluit"
+    ],
+    "use_when": "Create architecture views, decision records or an enterprise model.",
+    "limits": "Load the matching references; Claude Code is documented, other clients unverified here.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "source-reviewed",
+    "evidence_scope": "Exact instruction file reviewed; not locally executed.",
+    "evidence_reference": "catalog/skills/architecture/enterprise-architecture.md",
+    "runtime_notes": "Python for the optional consistency linter; this is not a Python-only architecture skill.",
+    "recipes": [
+      "recipes/specialist-review.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "matt-improve-codebase-architecture",
+    "name": "improve-codebase-architecture",
+    "source": "Matt Pocock",
+    "upstream": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/improve-codebase-architecture/SKILL.md",
+    "catalog_entry": "catalog/skills/development/matt-pocock.md",
+    "goals": [
+      "architecture",
+      "maintainability"
+    ],
+    "categories": [
+      "architecture",
+      "development"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "architectuur",
+      "onderhoudbaarheid",
+      "refactoring",
+      "modules"
+    ],
+    "use_when": "Explore codebase friction and opportunities to deepen modules.",
+    "limits": "User-invoked; requires helper skills and a fresh subagent; writes an HTML report with CDN assets and can update glossary/ADRs later.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "source-reviewed",
+    "evidence_scope": "Main SKILL.md reviewed; helper chain not fully reviewed or executed.",
+    "evidence_reference": "catalog/skills/development/matt-pocock.md",
+    "runtime_notes": "No specific programming language required by the instruction file.",
+    "recipes": [
+      "recipes/specialist-review.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "matt-research",
+    "name": "research",
+    "source": "Matt Pocock",
+    "upstream": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/research/SKILL.md",
+    "catalog_entry": "catalog/skills/development/matt-pocock.md",
+    "goals": [
+      "research"
+    ],
+    "categories": [
+      "research"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "onderzoek",
+      "bronnen",
+      "uitzoeken"
+    ],
+    "use_when": "Investigate a question using primary sources and produce cited findings.",
+    "limits": "Requires a background agent and writes a Markdown findings file; use only when delegation and writes are authorized.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "source-reviewed",
+    "evidence_scope": "Exact instruction file reviewed; not locally executed.",
+    "evidence_reference": "catalog/skills/development/matt-pocock.md",
+    "runtime_notes": "No specific programming language required by the instruction file.",
+    "recipes": [
+      "recipes/specialist-review.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "humbleteam-accessibility",
+    "name": "accessibility-audit",
+    "source": "Humbleteam",
+    "upstream": "https://github.com/humbleteam/accessibility-audit/blob/b5735da6c03604eea342a7de0e1e6c1d3550dca5/SKILL.md",
+    "catalog_entry": "catalog/skills/accessibility-ux/humbleteam-accessibility.md",
+    "goals": [
+      "accessibility"
+    ],
+    "categories": [
+      "accessibility-ux"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "toegankelijkheid",
+      "a11y",
+      "wcag",
+      "web",
+      "html",
+      "css"
+    ],
+    "use_when": "Review supplied web markup or visuals against a bounded accessibility checklist.",
+    "limits": "Web-scoped; screenshots and markup do not establish full runtime or assistive-technology conformance.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "locally-tested",
+    "evidence_scope": "One static HTML fixture on 2026-10-30; no full conformance assessment.",
+    "evidence_reference": "docs/evaluations/2026-10-30/README.md",
+    "runtime_notes": "Accepts visual or markup evidence; language:any is not a claim of non-web accessibility support.",
+    "recipes": [
+      "recipes/specialist-review.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "openai-security-threat-model",
+    "name": "security-threat-model",
+    "source": "OpenAI",
+    "upstream": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-threat-model/SKILL.md",
+    "catalog_entry": "catalog/skills/security-privacy/openai-threat-model.md",
+    "goals": [
+      "security",
+      "threat-modeling"
+    ],
+    "categories": [
+      "security-privacy"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "beveiliging",
+      "dreigingsmodel",
+      "appsec",
+      "dreigingen"
+    ],
+    "use_when": "Model repository-grounded assets, trust boundaries, abuse paths and mitigations.",
+    "limits": "Explicit AppSec request; validate context with the user before the final report; not a runtime security audit.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "locally-tested",
+    "evidence_scope": "One synthetic threat-model task and follow-up on 2026-10-30.",
+    "evidence_reference": "docs/evaluations/2026-10-30/README.md",
+    "runtime_notes": "No specific programming language required by the instruction file.",
+    "recipes": [
+      "recipes/specialist-review.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "exadel-readiness",
+    "name": "agentic-readiness-assessment",
+    "source": "Exadel",
+    "upstream": "https://github.com/exadel-inc/agentic-readiness-assessment/blob/1313702ad53e2f2c069e2f4ef2dbebd19cb17e3d/skills/agentic-readiness-assessment/SKILL.md",
+    "catalog_entry": "catalog/skills/development/agentic-readiness-assessment.md",
+    "goals": [
+      "readiness"
+    ],
+    "categories": [
+      "development"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "gereedheid",
+      "onboarding",
+      "repo",
+      "scan"
+    ],
+    "use_when": "Run a deliberate comprehensive repository-readiness assessment.",
+    "limits": "Writes a report, runs checks and a reversible probe; reviewed version requires a commercial closing link.",
+    "source_reviewed": "2026-10-30",
+    "evidence": "locally-tested",
+    "evidence_scope": "One synthetic repository on 2026-10-30; validator run separately by evaluator.",
+    "evidence_reference": "docs/evaluations/2026-10-30/README.md",
+    "runtime_notes": "Python report validator; project checks need the target project's runtimes.",
+    "recipes": [
+      "recipes/repository-readiness.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "matt-retro",
+    "name": "retro",
+    "source": "Matt Pocock",
+    "upstream": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/retro/SKILL.md",
+    "catalog_entry": "catalog/skills/development/matt-pocock-retro.md",
+    "goals": [
+      "retrospective",
+      "workflow-improvement"
+    ],
+    "categories": [
+      "development",
+      "personal-development"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "retro",
+      "terugblik",
+      "reflectie",
+      "werksessie",
+      "agentomgeving"
+    ],
+    "use_when": "After session friction, identify improvements to navigation, checks, steering files or tools.",
+    "limits": "Explicit user invocation; needs writing-for-agents and session evidence; recommendations do not authorize remediation.",
+    "source_reviewed": "2026-11-09",
+    "evidence": "source-reviewed",
+    "evidence_scope": "retro, writing-for-agents, README and license reviewed; no local execution.",
+    "evidence_reference": "catalog/skills/development/matt-pocock-retro.md",
+    "runtime_notes": "No specific programming language required by the instruction file.",
+    "recipes": [
+      "recipes/session-retrospective.md",
+      "recipes/evidence-driven-delivery.md",
+      "recipes/token-efficient-workflow.md"
+    ],
+    "kind": "skill"
+  },
+  {
+    "id": "openspec",
+    "name": "OpenSpec",
+    "source": "Fission-AI",
+    "upstream": "https://github.com/Fission-AI/OpenSpec/blob/0fa4a9705c20ef1c571fe3ded74435733e4b73a1/README.md",
+    "catalog_entry": "catalog/skills/development/openspec.md",
+    "runtime_notes": "Standalone CLI or package-manager installation; npm route needs Node.js >=22.12.0, not a JavaScript-only target project.",
+    "use_when": "Use a change-centric SDD toolkit with proposals, specs, design, tasks and archival.",
+    "limits": "Initialization/update writes agent/project files; command names vary by client; review documented usage telemetry.",
+    "kind": "tool",
+    "goals": [
+      "specification"
+    ],
+    "categories": [
+      "development"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "sdd",
+      "spec",
+      "specificatie",
+      "requirements"
+    ],
+    "source_reviewed": "2026-11-09",
+    "evidence": "source-reviewed",
+    "evidence_scope": "README and license reviewed; no local execution or comparative benchmark.",
+    "evidence_reference": "catalog/skills/development/openspec.md",
+    "recipes": [
+      "recipes/spec-driven-development.md"
+    ]
+  },
+  {
+    "id": "spec-kit",
+    "name": "Spec Kit",
+    "source": "GitHub",
+    "upstream": "https://github.com/github/spec-kit/blob/c43849408ac0de2ca6a52f14eaae71449776057b/README.md",
+    "catalog_entry": "catalog/skills/development/spec-kit.md",
+    "runtime_notes": "Specify CLI needs Python >=3.11 and uv in the reviewed setup; target application language is independent.",
+    "use_when": "Use a maintained SDD toolkit with project principles, specification, plan, tasks and implementation/convergence.",
+    "limits": "Initialization creates project/integration files; verify the selected agent integration and any community components.",
+    "kind": "tool",
+    "goals": [
+      "specification"
+    ],
+    "categories": [
+      "development"
+    ],
+    "programming_languages": [
+      "any"
+    ],
+    "aliases": [
+      "sdd",
+      "spec",
+      "specificatie",
+      "requirements"
+    ],
+    "source_reviewed": "2026-11-09",
+    "evidence": "source-reviewed",
+    "evidence_scope": "README and license reviewed; no local execution or comparative benchmark.",
+    "evidence_reference": "catalog/skills/development/spec-kit.md",
+    "recipes": [
+      "recipes/spec-driven-development.md"
+    ]
+  }
+]
