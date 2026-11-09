@@ -1,9 +1,9 @@
 # Catalog
 
-This is the ingredient catalog. For steps toward an output, start with the
-[recipe book](../recipes/README.md); for help choosing, use the
-[decision tree](../docs/start-here.md#decision-tree) or ask your agent to read
-[AGENTS.md](../AGENTS.md).
+This is the ingredient catalog. To choose a workflow, start with the four
+task routes in the [README](../README.md) or ask your agent to read
+[AGENTS.md](../AGENTS.md). The [full recipe index](../recipes/README.md)
+includes steps for each output and workflow improvements.
 
 Read the [selection guide](../docs/selection-guide.md) when combining ingredients.
 Recommendations are scoped judgments; source-reviewed does not mean

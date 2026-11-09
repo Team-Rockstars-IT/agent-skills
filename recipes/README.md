@@ -1,9 +1,9 @@
 # Recipes
 
-Choose a recipe by the output you need. Each combines a procedure, project
-context, tools and checks as needed; installing every ingredient is not a
-prerequisite. Start with the [decision tree](../docs/start-here.md#decision-tree)
-or ask an agent to read [AGENTS.md](../AGENTS.md) and help you choose.
+For a quick choice, use the four task routes in the [README](../README.md)
+or ask your agent to read [AGENTS.md](../AGENTS.md). This is the complete
+recipe index, including workflow improvements. Each recipe lists only the
+ingredients and checks needed for its output.
 
 | Recipe | Use when | Output |
 | --- | --- | --- |
