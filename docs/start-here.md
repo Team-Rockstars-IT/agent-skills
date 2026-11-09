@@ -1,21 +1,43 @@
-# Choose a starting workflow
+# Find a recipe
 
-Choose by task, then inspect the exact upstream skill and applicable harness
-instructions. Six choices now have pinned source and license reviews and
-single-fixture comparisons in the [evaluation report](evaluations/2026-10-30/README.md).
-These results support scoped use, not a universal validated bundle. Add a
-second skill when it provides a distinct output or check.
+The [README](../README.md) is the short starting point. Use this tree if you
+prefer a visual route; you do not need to choose an experience level first.
 
-| Task | Choice | Advice after evaluation | Remaining boundary |
-| --- | --- | --- | --- |
-| Implement a behavioral change | [Matt Pocock TDD](../catalog/skills/development/matt-pocock.md) | Recommend for explicit test-first work | Agree test seams; one small fixture does not prove better correctness |
-| Define a larger change | [Addy's SDD](../catalog/skills/development/addy-osmani.md) | Recommend for drafting specifications; stop for review | Later phases not evaluated; OpenSpec remains an untested alternative |
-| Assess repository readiness | [Exadel assessment](../catalog/skills/development/agentic-readiness-assessment.md) | Optional comprehensive audit; omit from lightweight default | Heavy report, score gates, Python validator and required commercial closing link |
-| Review web accessibility | [Accessibility Audit](../catalog/skills/accessibility-ux/humbleteam-accessibility.md) | Recommend within its bounded web checklist | Not full WCAG conformance; needs runtime and assistive-technology testing |
-| Diagnose SEO issues | [Marketing Skills: seo-audit](../catalog/skills/marketing-discovery/marketing-skills.md) | Exclude tested revision from default recommendation | Outdated tool guidance; re-review against current primary sources |
-| Examine a security design | [Threat modeling](../catalog/skills/security-privacy/openai-threat-model.md) | Recommend for explicit AppSec modeling with context validation | Static conditional model; no security audit or exploit verification |
+## Decision tree
 
-For other work, browse [all disciplines](../catalog/README.md), the
-[full selection report](skill-selection-report.md) or
-[find more skills](find-more-skills.md). Read the
-[conflict guide](selection-guide.md) when combining workflows.
+```mermaid
+flowchart TD
+    A{What do you want to do?}
+    A -->|Clarify an outcome| B[Clarify what you need]
+    A -->|Research or weigh options| C[Research and compare]
+    A -->|Make or improve something| D[Work in small steps]
+    A -->|Review or hand over a result| E[Review and deliver]
+```
+
+Open the matching [recipe](../recipes/README.md). Each contains ingredients,
+steps, a copyable prompt and the expected evidence.
+Inputs can be briefs, documents, designs, data or code. The artifact determines
+the checks and tool needs; no role, sector or programming-language pack is required.
+
+## Ask your agent to help choose
+
+Describe your goal and ask the agent to read [AGENTS.md](../AGENTS.md).
+It should recommend a recipe, identify anything missing and give one first
+step. The [selection recipe](../recipes/choose-your-setup.md) explains the
+process. Point to the file explicitly if your client does not discover it.
+
+## Specialist context, when needed
+
+For a software repository, consider [readiness](../recipes/repository-readiness.md)
+or [SDD](../recipes/spec-driven-development.md) when that specific need arises.
+
+Only explore more tooling when you can name a problem:
+
+- Cost or context volume: [token-efficient workflow](../recipes/token-efficient-workflow.md).
+- Coordination of separable tasks: [orchestration selection](../recipes/orchestration-selection.md).
+- Recurring session friction: [session retrospective](../recipes/session-retrospective.md).
+
+For ingredient details, browse the [catalog](../catalog/README.md). The
+[selection guide](selection-guide.md) explains the layers and conflicts;
+[dated evaluations](evaluations/2026-10-30/README.md) record what was actually
+tested. These details are available when needed, not prerequisites to start.

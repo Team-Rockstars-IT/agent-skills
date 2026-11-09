@@ -2,16 +2,44 @@
 
 Select by outcome, authority and constraints; start with one workflow and add another for a distinct gap.
 
+For a quick choice, start with the [README](../README.md) or ask your agent
+to read [AGENTS.md](../AGENTS.md). This guide provides detail when you need
+to compare ingredients or combine workflows.
+
 | Need | Start | Add when needed |
 | --- | --- | --- |
-| Unclear work | [define-work](../define-work/SKILL.md) | [OpenSpec](../catalog/skills/development/openspec.md) for durable specifications |
-| Readiness | [Agentic Readiness Assessment](../catalog/skills/development/agentic-readiness-assessment.md) | [agents-md](../agents-md/SKILL.md) to draft instructions |
+| Unclear outcome or boundaries | [Clarify what you need](../recipes/choose-your-setup.md) | For coding tasks, [define-work](../define-work/SKILL.md) |
+| Research or weighing options | [Research and compare](../recipes/specialist-review.md) | A focused upstream procedure when the question needs it |
+| Making or improving an artifact | [Work in small steps](../recipes/minimal-agent-workflow.md) | Artifact-specific checks and tools |
+| Review or handover | [Review and deliver](../recipes/evidence-driven-delivery.md) | For a software PR, [pr-evidence](../pr-evidence/SKILL.md) |
+| Readiness | [Readiness recipe](../recipes/repository-readiness.md): lightweight check or deliberate comprehensive assessment | [agents-md](../agents-md/SKILL.md) to draft instructions from observed context |
 | Behavioral change | [Matt Pocock TDD](../catalog/skills/development/matt-pocock.md) | reproduce-first diagnosis for hard bugs |
 | Architecture | [enterprise architecture](../catalog/skills/architecture/enterprise-architecture.md) | codebase architecture workflow |
 | Research | [research](../catalog/skills/research/README.md) | [Context7](../catalog/tools/context-and-retrieval/context7.md) for supported documentation |
-| Handover | [pr-evidence](../pr-evidence/SKILL.md) | independent review when risk warrants |
 | Coordination | [orchestration selection](../recipes/orchestration-selection.md) | orchestrator for demonstrated need |
 | Discover more skills or instructions | [Discovery guide](find-more-skills.md) | compare upstream instructions and harness compatibility |
+
+## Layers, when you need the distinction
+
+You do not need to choose an experience level or understand every layer to
+start. Use your task to choose a recipe; add components for a concrete gap.
+The core assumes neither a business domain nor a programming language. Relevant
+facts and rules come from the supplied context. Specialist entries keep their
+software, web, client and runtime requirements; `language:any` only concerns
+the programming-language requirement.
+
+| Component | Role |
+| --- | --- |
+| Project instructions (`AGENTS.md`) | Standing context, conventions and boundaries |
+| Recipe | Steps and ingredients for a desired output |
+| Skill | Reusable procedure for a particular step |
+| Tool or MCP integration | An action or information source the agent can access |
+| Harness | The agent client that controls discovery, execution and permissions |
+| Orchestration | Optional coordination across agents when its benefit justifies the cost |
+
+Evidence is separate: source-reviewed is different from locally-tested, and
+testing one skill does not validate a whole collection or every agent client.
+See the [dated evaluations](evaluations/2026-10-30/README.md).
 
 ## Conflicts and overlap
 

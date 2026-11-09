@@ -10,3 +10,20 @@ Reviewing only a collection index supports discovery-level inclusion; it does
 not establish the behavior of each skill in that collection. Record local
 execution separately with the task, harness, version, checks and outcome.
 Use the [quality review](docs/quality-review.md) to prioritize follow-up work.
+
+Concrete recipe choices live in [recipe-skills.json](catalog/recipe-skills.json).
+Record the exact skill/documentation revision, `kind` (skill/tool), goals,
+categories, programming languages, runtime needs, aliases and scoped evidence.
+`language:any` means no particular source-language requirement, not runtime
+acceptance for every stack; a CLI runtime is separate. Dutch aliases support
+goal-based searches without changing upstream names.
+Keep the core recipes usable with briefs, documents, designs, data or code.
+Put specialist requirements behind a clear use condition; do not make a
+repository, shell, code diff or extra skill a prerequisite for general work.
+The renderer omits default `language:any` badges; the filter and metadata keep
+that meaning. Explicit programming-language restrictions remain visible.
+
+Run `python scripts/skill_catalog.py build` after index changes; it generates
+the [finder](docs/skill-finder.md) and marked upstream tables in recipes.
+`python scripts/check_catalog.py` checks metadata and generated-view drift.
+For search/generator changes, run `python -m unittest discover -s scripts -p test_skill_catalog.py`.

@@ -3,17 +3,19 @@
 - **ID:** openspec
 - **Type:** specification workflow tool
 - **Primary category:** development
-- **Tags:** development, agent-assisted-work
-- **Upstream:** [OpenSpec](https://github.com/Fission-AI/OpenSpec)
+- **Tags:** specification, sdd, workflow, change-management, language-any
+- **Upstream:** [OpenSpec README at the reviewed revision](https://github.com/Fission-AI/OpenSpec/blob/0fa4a9705c20ef1c571fe3ded74435733e4b73a1/README.md)
 - **Recommendation:** situational — for complex changes requiring shared specifications.
-- **Evidence:** source-reviewed; not locally tested.
+- **Evidence:** source-reviewed on 2026-11-09: README and MIT license; not locally installed, executed or benchmarked here.
 - **Lifecycle:** unknown; check current upstream activity.
-- **Last reviewed:** 2026-10-30
-- **License:** See upstream license; check current upstream terms.
+- **Last reviewed:** 2026-11-09
+- **License:** [MIT at the reviewed revision](https://github.com/Fission-AI/OpenSpec/blob/0fa4a9705c20ef1c571fe3ded74435733e4b73a1/LICENSE).
 
 ## Purpose and output
 
-durable spec-driven change artifacts.
+Organizes change artifacts in `openspec/`: proposal, requirements/scenarios,
+design and tasks, followed by implementation and archival into maintained
+specifications. The documented process supports iteration between artifacts.
 
 ## Use or skip
 
@@ -21,7 +23,14 @@ Use for complex changes requiring shared specifications. Skip for small well-und
 
 ## Requirements and tradeoffs
 
-CLI and supported coding assistant; check upstream prerequisites. Specifications require maintenance and behavioral verification. Token and cost impact is unmeasured here.
+CLI and a supported coding assistant. The reviewed README offers standalone
+installation and package-manager routes; its npm route requires Node.js
+22.12.0 or higher. That runtime does not make the target application
+JavaScript-specific. Initialization and updates write project/agent files;
+implementation changes the application. Command spellings vary by assistant.
+The README documents opt-out usage telemetry; review that policy before use.
+Specifications require maintenance and behavioral verification. Token/cost
+impact and client compatibility are unmeasured here.
 
 ## Obtain and maintain
 
@@ -29,4 +38,4 @@ Follow current [upstream instructions](https://github.com/Fission-AI/OpenSpec), 
 
 ## Related
 
-[Selection and conflicts](../../../docs/selection-guide.md) · [Evaluation](../../../docs/evaluation.md) · [Recipes](../../../recipes/README.md)
+[SDD recipe](../../../recipes/spec-driven-development.md) · [Spec Kit](spec-kit.md) · [Selection and conflicts](../../../docs/selection-guide.md)
