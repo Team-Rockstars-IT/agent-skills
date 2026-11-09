@@ -1,81 +1,64 @@
-# Review a question in a specialist discipline
+# Research a question and compare options
 
-**Outcome:** a scoped assessment, design or research report with traceable
-evidence, limitations and next actions.
-**Use when:** the output concerns architecture, security, accessibility,
-research, product, operations, data or communication rather than a code change.
-**Prerequisites:** the question, source material and agreed review scope.
+**Outcome:** evidence-backed findings or a reasoned recommendation.
+**Use when:** answering a question, comparing alternatives or preparing a decision.
+**Input:** the question, available sources, constraints and intended audience.
 
 ## Ingredients
 
-- **Instructions:** applicable project rules and the expected report format.
-- **Skill:** one focused procedure selected from the discipline below, when
-  suitable. A collection entry is a discovery route; inspect the exact skill.
-- **Tools and access:** sources needed to support the specific question.
-  Static source access may suffice for a limited review; browser, runtime or
-  service access is required for claims about behavior those sources cannot show.
-- **Harness:** your existing client with the required access and permissions.
-
-## Choose a discipline
-
-| Desired output | Catalog route | Selection boundary |
-| --- | --- | --- |
-| Architecture views, boundaries or decisions | [Architecture](../catalog/skills/architecture/README.md) | Tie choices to stakeholder concerns and constraints |
-| Security design review or threat model | [Security](../catalog/skills/security-privacy/README.md) | Distinguish threat modeling from runtime security testing |
-| Web accessibility findings | [Accessibility and UX](../catalog/skills/accessibility-ux/README.md) | Source review alone cannot establish full conformance |
-| Research or source comparison | [Research](../catalog/skills/research/README.md) | Verify source quality and fit outside a scientific context |
-| Product framing or experiment plan | [Product and strategy](../catalog/skills/product-strategy/README.md) | Check the exact procedure and domain assumptions |
-| Operational review | [Operations](../catalog/skills/operations-reliability/README.md) | Separate advice from authorized changes to running systems |
-| Evaluation or measurement plan | [Data and AI](../catalog/skills/data-ai/README.md) | Require representative tasks and explicit success measures |
-| Documentation or explanation | [Communication](../catalog/skills/communication/README.md) | Preserve source meaning and verify factual claims |
-| SEO or marketing review | [Marketing](../catalog/skills/marketing-discovery/README.md) | The tested SEO revision is excluded from default recommendations |
-| Learning or reflection | [Personal development](../catalog/skills/personal-development/README.md) | Coverage is limited; report gaps instead of inventing a skill |
-
-<!-- recipe-skills:start -->
-## Upstream choices
-
-Choose one when it fits; these are optional choices, not an install bundle. [Tag meanings](../docs/skill-finder.md#tags-and-programming-languages).
-
-| Use when | Skill and source | Tags | Evidence |
-| --- | --- | --- | --- |
-| Create architecture views, decision records or an enterprise model. | [Gaurav Sharma · /enterprise-architecture](https://github.com/gauravs19/enterprise-architecture-skill/blob/898fca2b7aa75a725284411f8f125861245f15a8/SKILL.md) | `goal:architecture` `goal:decision-records` `category:architecture` `language:any` | [source-reviewed](../catalog/skills/architecture/enterprise-architecture.md): Exact instruction file reviewed; not locally executed. |
-| Explore codebase friction and opportunities to deepen modules. | [Matt Pocock · /improve-codebase-architecture](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/improve-codebase-architecture/SKILL.md) | `goal:architecture` `goal:maintainability` `category:architecture` `category:development` `language:any` | [source-reviewed](../catalog/skills/development/matt-pocock.md): Main SKILL.md reviewed; helper chain not fully reviewed or executed. |
-| Investigate a question using primary sources and produce cited findings. | [Matt Pocock · /research](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/research/SKILL.md) | `goal:research` `category:research` `language:any` | [source-reviewed](../catalog/skills/development/matt-pocock.md): Exact instruction file reviewed; not locally executed. |
-| Review supplied web markup or visuals against a bounded accessibility checklist. | [Humbleteam · /accessibility-audit](https://github.com/humbleteam/accessibility-audit/blob/b5735da6c03604eea342a7de0e1e6c1d3550dca5/SKILL.md) | `goal:accessibility` `category:accessibility-ux` `language:any` | [locally-tested](../docs/evaluations/2026-10-30/README.md): One static HTML fixture on 2026-10-30; no full conformance assessment. |
-| Model repository-grounded assets, trust boundaries, abuse paths and mitigations. | [OpenAI · /security-threat-model](https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-threat-model/SKILL.md) | `goal:security` `goal:threat-modeling` `category:security-privacy` `language:any` | [locally-tested](../docs/evaluations/2026-10-30/README.md): One synthetic threat-model task and follow-up on 2026-10-30. |
-<!-- recipe-skills:end -->
+- Supplied briefs, documents, data, observations or project material.
+- Source access appropriate to the claims. Use your existing agent and tools;
+  add a specialist workflow only for a question within its documented scope.
 
 ## Steps
 
-1. Define the question, audience, expected artifact and what evidence is needed.
-2. Read the discipline index and candidate entry. Select the exact skill only
-   after checking its evidence, requirements, scope and upstream instructions.
-   If coverage is insufficient, use [discovery](../docs/find-more-skills.md)
-   or a bounded general workflow and state the gap.
-3. Identify available sources and access. Label any conclusion that needs
-   additional evidence as conditional or unverified.
-4. Perform the authorized review. Separate observed facts, interpretation,
-   proposals and unanswered questions.
-5. Deliver prioritized findings, source references, limitations and next steps.
+1. State the question and the decision it supports. Define comparison criteria
+   before choosing a preferred option.
+2. Gather the evidence that can establish each material claim. Keep supplied
+   facts, external facts, interpretation and proposals separate.
+3. Compare alternatives against the same constraints and look for evidence
+   that could change the initial recommendation.
+4. Mark missing information and unsupported claims explicitly. Ask only when
+   an unanswered question would materially change the result.
+5. Deliver findings, sources, tradeoffs, uncertainty and a concrete next action.
 
 ## Ask an agent
 
 ```text
-Use the specialist-review recipe for [question and discipline]. My sources
-are [paths/links] and the output is for [audience]. Select one suitable
-procedure, explain what the available evidence can establish and identify
-missing access before making claims that depend on it. Produce [artifact]
-with source-backed findings, uncertainty and prioritized next steps.
+Investigate [question] using [sources]. Compare the options against [constraints]
+and explain which evidence supports the conclusion. Separate facts, assumptions
+and proposals. Give a recommendation when the evidence supports one and state
+what still needs checking.
 ```
 
 ## Optional enhancements and tradeoffs
 
-Add another discipline only for a distinct question. Use an independent review
-when its value warrants the cost and delegation is authorized. Additional
-tools and reviewers do not turn a limited assessment into certification.
+Browse the [catalog](../catalog/README.md) for a specific discipline. Architecture,
+web accessibility, AppSec and codebase skills retain their own scope; they are
+not universal review procedures. A general agent can work directly from the
+supplied evidence when no specialist procedure is needed.
+
+<!-- recipe-skills:start -->
+<details>
+<summary>Optional specialist workflows</summary>
+
+## Upstream choices
+
+Select only for a matching need and scope. [Tag meanings](../docs/skill-finder.md#tags-and-programming-languages).
+
+| Use when | Skill and source | Tags | Evidence |
+| --- | --- | --- | --- |
+| Create architecture views, decision records or an enterprise model. | [Gaurav Sharma · /enterprise-architecture](https://github.com/gauravs19/enterprise-architecture-skill/blob/898fca2b7aa75a725284411f8f125861245f15a8/SKILL.md) | `goal:architecture` `goal:decision-records` `category:architecture` | [source-reviewed](../catalog/skills/architecture/enterprise-architecture.md): Exact instruction file reviewed; not locally executed. |
+| Explore codebase friction and opportunities to deepen modules. | [Matt Pocock · /improve-codebase-architecture](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/improve-codebase-architecture/SKILL.md) | `goal:architecture` `goal:maintainability` `category:architecture` `category:development` | [source-reviewed](../catalog/skills/development/matt-pocock.md): Main SKILL.md reviewed; helper chain not fully reviewed or executed. |
+| Investigate a question using primary sources and produce cited findings. | [Matt Pocock · /research](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/research/SKILL.md) | `goal:research` `category:research` | [source-reviewed](../catalog/skills/development/matt-pocock.md): Exact instruction file reviewed; not locally executed. |
+| Review supplied web markup or visuals against a bounded accessibility checklist. | [Humbleteam · /accessibility-audit](https://github.com/humbleteam/accessibility-audit/blob/b5735da6c03604eea342a7de0e1e6c1d3550dca5/SKILL.md) | `goal:accessibility` `category:accessibility-ux` | [locally-tested](../docs/evaluations/2026-10-30/README.md): One static HTML fixture on 2026-10-30; no full conformance assessment. |
+| Model repository-grounded assets, trust boundaries, abuse paths and mitigations. | [OpenAI · /security-threat-model](https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-threat-model/SKILL.md) | `goal:security` `goal:threat-modeling` `category:security-privacy` | [locally-tested](../docs/evaluations/2026-10-30/README.md): One synthetic threat-model task and follow-up on 2026-10-30. |
+
+</details>
+<!-- recipe-skills:end -->
 
 ## Evidence and checks
 
-Each finding has supporting evidence or an explicit assumption. State what
-was inspected, tested and left unverified, and preserve the selected skill's
-review date and evaluation scope.
+Each substantive finding has a source or an explicit assumption. State what was
+inspected and what the available material cannot establish. Record the selected
+upstream revision and evidence scope when a specialist skill is used.

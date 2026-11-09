@@ -1,6 +1,9 @@
 # Agent instructions
 
 This is a recipe book and reference catalog for agentic work across disciplines.
+The four core goals are domain- and programming-language-neutral. Use the
+supplied brief, document, design, data or code; do not assume a repository,
+shell, test framework or pull request. Specialist workflows retain their scope.
 Most catalog entries link upstream; they are not installed skills. Original
 implementations live in `define-work/`, `agents-md/` and `pr-evidence/`.
 
@@ -18,6 +21,8 @@ implementations live in `define-work/`, `agents-md/` and `pr-evidence/`.
    primary skill initially, and additional tools only for a concrete missing
    capability. A simple task may need nothing extra. Do not make the user
    choose an experience level, learn the layers or fill in an intake form.
+   Domain facts come from the task's sources. Check the artifact's requirements
+   before selecting a software-, web- or client-specific upstream workflow.
 3. Ask a focused question only when a missing fact would change the choice.
    Otherwise proceed with stated assumptions. Do not assume a component is
    installed or available without evidence.

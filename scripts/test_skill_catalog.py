@@ -27,6 +27,22 @@ class SkillCatalogTests(unittest.TestCase):
         self.assertEqual([r["id"] for r in rows], ["python-only", neutral["id"]])
         self.assertEqual(catalog.search([python], language="typescript"), [])
 
+    def test_default_language_badge_is_hidden_but_explicit_restrictions_remain(self):
+        neutral = self.data[0]
+        self.assertNotIn("language:any", catalog.table([neutral], "recipes/minimal-agent-workflow.md"))
+        self.assertEqual(neutral["programming_languages"], ["any"])
+        restricted = {**neutral, "programming_languages": ["python"]}
+        self.assertIn("language:python", catalog.table([restricted], "recipes/minimal-agent-workflow.md"))
+
+    def test_core_recipes_disclose_specialist_choices_only_on_demand(self):
+        generated = catalog.documents(self.data)
+        for recipe in catalog.CORE_RECIPES - {"recipes/choose-your-setup.md"}:
+            text = generated[recipe]
+            self.assertIn("<summary>Optional specialist workflows</summary>", text)
+            self.assertLess(text.index("## Steps"), text.index(catalog.START))
+        self.assertNotIn("<summary>Optional specialist workflows</summary>",
+                         generated["recipes/spec-driven-development.md"])
+
     def test_instruction_language_cannot_be_used_as_programming_language(self):
         result = subprocess.run([sys.executable, str(catalog.ROOT / "scripts/skill_catalog.py"),
                                  "search", "--language", "nl"], capture_output=True, text=True)

@@ -17,6 +17,11 @@ categories, programming languages, runtime needs, aliases and scoped evidence.
 `language:any` means no particular source-language requirement, not runtime
 acceptance for every stack; a CLI runtime is separate. Dutch aliases support
 goal-based searches without changing upstream names.
+Keep the core recipes usable with briefs, documents, designs, data or code.
+Put specialist requirements behind a clear use condition; do not make a
+repository, shell, code diff or extra skill a prerequisite for general work.
+The renderer omits default `language:any` badges; the filter and metadata keep
+that meaning. Explicit programming-language restrictions remain visible.
 
 Run `python scripts/skill_catalog.py build` after index changes; it generates
 the [finder](docs/skill-finder.md) and marked upstream tables in recipes.

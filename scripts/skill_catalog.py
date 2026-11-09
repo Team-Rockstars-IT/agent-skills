@@ -12,6 +12,8 @@ DATA = ROOT / "catalog/recipe-skills.json"
 FINDER = "docs/skill-finder.md"
 START = "<!-- recipe-skills:start -->"
 END = "<!-- recipe-skills:end -->"
+CORE_RECIPES = {"recipes/choose-your-setup.md", "recipes/specialist-review.md",
+                "recipes/minimal-agent-workflow.md", "recipes/evidence-driven-delivery.md"}
 EVIDENCE = {"locally-tested", "source-reviewed", "unverified"}
 CATEGORIES = {"development", "architecture", "product-strategy", "research",
               "accessibility-ux", "security-privacy", "personal-development",
@@ -112,7 +114,7 @@ def link(relative, document):
 def tags(row):
     return [*(f"goal:{g}" for g in row["goals"]),
             *(f"category:{c}" for c in row["categories"]),
-            *(f"language:{lang}" for lang in row["programming_languages"])]
+            *(f"language:{lang}" for lang in row["programming_languages"] if lang != "any")]
 
 
 def cell(value):
@@ -171,7 +173,10 @@ Add `--json` for structured results. Searching needs Python, not a skill install
 - `language:any` means the reviewed instructions impose no particular programming
   language. It matches every `--language` filter, after explicit language matches;
   it does not mean every stack/client was runtime-tested. The current focused set
-  consists of these cross-language procedures. Web accessibility remains web-scoped.
+  consists of these cross-language procedures. This default is omitted from
+  badges to avoid repeating it in every row; it remains in the JSON and search.
+  Programming-language neutrality does not expand a software/web-specific scope:
+  check the use case and linked constraints before selecting a workflow.
 - Runtime requirements are separate: a Python validator does not make a skill
   Python-specific. Each JSON record includes `runtime_notes` and constraints.
 - Tags use English tokens; Dutch search aliases include `terugblik`,
@@ -202,9 +207,15 @@ The finder and marked recipe tables are generated from the same records.
             recipes.add(path.relative_to(ROOT).as_posix())
     for recipe in sorted(recipes):
         rows = [row for row in data if recipe in row["recipes"]]
-        block = ((START + "\n## Upstream choices\n\nChoose one when it fits; these are optional choices, not an install bundle. "
-                  f"[Tag meanings]({link(FINDER, recipe)}#tags-and-programming-languages).\n\n"
-                  + table(rows, recipe) + "\n" + END) if rows else "")
+        if rows:
+            section = ("## Upstream choices\n\nSelect only for a matching need and scope. "
+                       f"[Tag meanings]({link(FINDER, recipe)}#tags-and-programming-languages).\n\n"
+                       + table(rows, recipe))
+            if recipe in CORE_RECIPES:
+                section = "<details>\n<summary>Optional specialist workflows</summary>\n\n" + section + "\n\n</details>"
+            block = START + "\n" + section + "\n" + END
+        else:
+            block = ""
         output[recipe] = replace_block((ROOT / recipe).read_text(encoding="utf-8"), block)
     return output
 
@@ -263,6 +274,8 @@ def main():
                           f"  Source: {row['upstream']}\n  Recipe: {', '.join(row['recipes'])}\n"
                           f"  Evidence: {row['evidence_scope']}\n  Limits: {row['limits']}\n"
                           f"  Runtime: {row['runtime_notes']}\n")
+                    if args.language and "any" in row["programming_languages"]:
+                        print("  Language match: general procedure; no language restriction recorded. Check its task/client scope.\n")
     except (ValueError, OSError, KeyError) as exc:
         parser.exit(1, str(exc) + "\n")
     return 0

@@ -8,14 +8,16 @@ prefer a visual route; you do not need to choose an experience level first.
 ```mermaid
 flowchart TD
     A{What do you want to do?}
-    A -->|Check a repository| B[Repository readiness]
-    A -->|Build or fix something| C[Minimal agent workflow]
-    A -->|Research, review or design| D[Specialist review]
-    A -->|Hand over work| E[Evidence-driven delivery]
+    A -->|Clarify an outcome| B[Clarify what you need]
+    A -->|Research or weigh options| C[Research and compare]
+    A -->|Make or improve something| D[Work in small steps]
+    A -->|Review or hand over a result| E[Review and deliver]
 ```
 
 Open the matching [recipe](../recipes/README.md). Each contains ingredients,
 steps, a copyable prompt and the expected evidence.
+Inputs can be briefs, documents, designs, data or code. The artifact determines
+the checks and tool needs; no role, sector or programming-language pack is required.
 
 ## Ask your agent to help choose
 
@@ -24,7 +26,10 @@ It should recommend a recipe, identify anything missing and give one first
 step. The [selection recipe](../recipes/choose-your-setup.md) explains the
 process. Point to the file explicitly if your client does not discover it.
 
-## Improve an existing workflow
+## Specialist context, when needed
+
+For a software repository, consider [readiness](../recipes/repository-readiness.md)
+or [SDD](../recipes/spec-driven-development.md) when that specific need arises.
 
 Only explore more tooling when you can name a problem:
 

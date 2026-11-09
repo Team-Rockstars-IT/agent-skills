@@ -21,13 +21,13 @@ or independently testable capabilities. For a small, clear fix, use the
 <!-- recipe-skills:start -->
 ## Upstream choices
 
-Choose one when it fits; these are optional choices, not an install bundle. [Tag meanings](../docs/skill-finder.md#tags-and-programming-languages).
+Select only for a matching need and scope. [Tag meanings](../docs/skill-finder.md#tags-and-programming-languages).
 
 | Use when | Skill and source | Tags | Evidence |
 | --- | --- | --- | --- |
-| Specify a larger or ambiguous change before planning and coding. | [Addy Osmani · /spec-driven-development](https://github.com/addyosmani/agent-skills/blob/eb07f19f52c2669f2364897aaa293e2aaddd7b1c/skills/spec-driven-development/SKILL.md) | `goal:specification` `category:development` `category:product-strategy` `language:any` | [locally-tested](../docs/evaluations/2026-10-30/README.md): Specification phase only, one synthetic task on 2026-10-30. |
-| Use a change-centric SDD toolkit with proposals, specs, design, tasks and archival. | [Fission-AI · OpenSpec (tool)](https://github.com/Fission-AI/OpenSpec/blob/0fa4a9705c20ef1c571fe3ded74435733e4b73a1/README.md) | `goal:specification` `category:development` `language:any` | [source-reviewed](../catalog/skills/development/openspec.md): README and license reviewed; no local execution or comparative benchmark. |
-| Use a maintained SDD toolkit with project principles, specification, plan, tasks and implementation/convergence. | [GitHub · Spec Kit (tool)](https://github.com/github/spec-kit/blob/c43849408ac0de2ca6a52f14eaae71449776057b/README.md) | `goal:specification` `category:development` `language:any` | [source-reviewed](../catalog/skills/development/spec-kit.md): README and license reviewed; no local execution or comparative benchmark. |
+| Specify a larger or ambiguous change before planning and coding. | [Addy Osmani · /spec-driven-development](https://github.com/addyosmani/agent-skills/blob/eb07f19f52c2669f2364897aaa293e2aaddd7b1c/skills/spec-driven-development/SKILL.md) | `goal:specification` `category:development` `category:product-strategy` | [locally-tested](../docs/evaluations/2026-10-30/README.md): Specification phase only, one synthetic task on 2026-10-30. |
+| Use a change-centric SDD toolkit with proposals, specs, design, tasks and archival. | [Fission-AI · OpenSpec (tool)](https://github.com/Fission-AI/OpenSpec/blob/0fa4a9705c20ef1c571fe3ded74435733e4b73a1/README.md) | `goal:specification` `category:development` | [source-reviewed](../catalog/skills/development/openspec.md): README and license reviewed; no local execution or comparative benchmark. |
+| Use a maintained SDD toolkit with project principles, specification, plan, tasks and implementation/convergence. | [GitHub · Spec Kit (tool)](https://github.com/github/spec-kit/blob/c43849408ac0de2ca6a52f14eaae71449776057b/README.md) | `goal:specification` `category:development` | [source-reviewed](../catalog/skills/development/spec-kit.md): README and license reviewed; no local execution or comparative benchmark. |
 <!-- recipe-skills:end -->
 
 ## Steps

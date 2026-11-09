@@ -8,12 +8,14 @@ to compare ingredients or combine workflows.
 
 | Need | Start | Add when needed |
 | --- | --- | --- |
-| Unclear work | [define-work](../define-work/SKILL.md) | [OpenSpec](../catalog/skills/development/openspec.md) for durable specifications |
+| Unclear outcome or boundaries | [Clarify what you need](../recipes/choose-your-setup.md) | For coding tasks, [define-work](../define-work/SKILL.md) |
+| Research or weighing options | [Research and compare](../recipes/specialist-review.md) | A focused upstream procedure when the question needs it |
+| Making or improving an artifact | [Work in small steps](../recipes/minimal-agent-workflow.md) | Artifact-specific checks and tools |
+| Review or handover | [Review and deliver](../recipes/evidence-driven-delivery.md) | For a software PR, [pr-evidence](../pr-evidence/SKILL.md) |
 | Readiness | [Readiness recipe](../recipes/repository-readiness.md): lightweight check or deliberate comprehensive assessment | [agents-md](../agents-md/SKILL.md) to draft instructions from observed context |
 | Behavioral change | [Matt Pocock TDD](../catalog/skills/development/matt-pocock.md) | reproduce-first diagnosis for hard bugs |
 | Architecture | [enterprise architecture](../catalog/skills/architecture/enterprise-architecture.md) | codebase architecture workflow |
 | Research | [research](../catalog/skills/research/README.md) | [Context7](../catalog/tools/context-and-retrieval/context7.md) for supported documentation |
-| Handover | [pr-evidence](../pr-evidence/SKILL.md) | independent review when risk warrants |
 | Coordination | [orchestration selection](../recipes/orchestration-selection.md) | orchestrator for demonstrated need |
 | Discover more skills or instructions | [Discovery guide](find-more-skills.md) | compare upstream instructions and harness compatibility |
 
@@ -21,6 +23,10 @@ to compare ingredients or combine workflows.
 
 You do not need to choose an experience level or understand every layer to
 start. Use your task to choose a recipe; add components for a concrete gap.
+The core assumes neither a business domain nor a programming language. Relevant
+facts and rules come from the supplied context. Specialist entries keep their
+software, web, client and runtime requirements; `language:any` only concerns
+the programming-language requirement.
 
 | Component | Role |
 | --- | --- |

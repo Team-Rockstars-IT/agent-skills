@@ -1,31 +1,31 @@
-# Choose what you need
+# Clarify what you need
 
-**Outcome:** one recipe, any missing essentials and a first step.
-**Use when:** you know what you want to achieve but not which skills/tools fit.
-**Prerequisites:** your goal and an agent that can read this library.
+**Outcome:** a bounded task, an expected result and a useful first step.
+**Use when:** the intent, boundaries or way forward are unclear.
+**Input:** your goal and any available brief, document, design, data or project.
 
 ## Ingredients
 
-- **Instructions:** [AGENTS.md](../AGENTS.md) and relevant target-project rules.
-- **Skill:** none required to make the selection.
-- **Tools and access:** existing capabilities; source access as needed.
-- **Harness:** your existing agent client.
+- Use the context already supplied and applicable project rules.
+- No additional skill or tool is required by this recipe. Select one only
+  if a specific missing capability affects the next step.
 
 ## Steps
 
-1. Describe your goal in your own words. Project, client and constraints can
-   be supplied when relevant; there is no required intake form.
-2. The agent reads the [task routes](../README.md) and one matching recipe.
-   It uses known context and asks only about facts that would change the choice.
-3. It recommends the smallest setup, distinguishing observed availability
-   from missing requirements. New skills/tools need a specific reason.
-4. It gives one concrete first step and the expected output.
+1. State the desired result, who will use it and how they could assess it.
+2. Identify the binding constraints, available evidence and what is outside
+   the task. Ask a focused question only when its answer changes the approach.
+3. Match the next output to a [core goal](README.md#core-goals). Use existing
+   capabilities; do not assume a repository, shell or particular agent client.
+4. Give one first action and the expected output. Keep assumptions explicit
+   rather than turning them into domain facts.
 
 ## Ask an agent
 
 ```text
-Read AGENTS.md in this repository. I want to [goal].
-Recommend what I need and give me one first step.
+I want to [goal]. Use the supplied context to clarify the intended result,
+boundaries and how to check success. Ask only about a missing fact that would
+change the approach, then give me one useful first step.
 ```
 
 ## Optional enhancements and tradeoffs
@@ -37,6 +37,6 @@ Recommendation-only requests do not authorize installs or project changes.
 
 ## Evidence and checks
 
-The answer has three parts: **Use**, **Need**, **Start**. It links to the recipe
-and states material uncertainty without claiming unverified availability,
-compatibility or results. Expand the explanation when the user asks.
+The task names a result, constraints, a success check and remaining assumptions.
+For a setup recommendation, use **Use**, **Need**, **Start** as described in
+[AGENTS.md](../AGENTS.md). No availability or compatibility is implied by a catalog listing.
